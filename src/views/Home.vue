@@ -1,8 +1,5 @@
 <template>
-  <div class="home">
-    尽力而为
-
-  </div>
+  <div class="home">尽力而为 11111</div>
 </template>
 
 <script>
