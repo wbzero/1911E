@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     尽力而为
+    <h1>尽力而为</h1>
 
   </div>
 </template>
