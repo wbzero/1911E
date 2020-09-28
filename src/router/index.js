@@ -8,12 +8,50 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+      show:true
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/Login.vue'),
+    meta:{
+      show:false
+    }
+  },
+  {
+    path: '/lessone',
+    name: 'Lessone',
+    component: () => import('../views/lessone/index.vue'),
+    meta:{
+      show:true
+    }
+  },
+  {
+    path: '/course',
+    name: 'Course',
+    component: () => import('../views/course/index.vue'),
+    meta:{
+      show:true
+    }
+  },
+  {
+    path: '/practice',
+    name: 'Practice',
+    component: () => import('../views/practice/index.vue'),
+    meta:{
+      show:true
+    }
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: () => import('../views/user/index.vue'),
+    meta:{
+      show:true
+    }
   }
 ]
 
