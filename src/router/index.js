@@ -80,7 +80,6 @@ const routes = [{
       show: false
     }
   },
-<<<<<<< HEAD
   // 精品课程
   {
     path: '/Coursedetail',
@@ -100,9 +99,7 @@ const routes = [{
     }
   },
 
-=======
   
->>>>>>> e043099de32f6117f869438cadf0ee6bcc4f8650
 ]
 
 const router = new VueRouter({
