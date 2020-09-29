@@ -1,4 +1,3 @@
-
 <template>
     <div class="login_body">
      <div class="img" v-if="isshow">

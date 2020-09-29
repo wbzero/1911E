@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div @click="goto">
     <p class="num">{{item.num}}</p>
     <p class="title">{{item.title}}</p>
     <p class="bot">{{item.dispa}}</p>
@@ -10,6 +10,11 @@
 export default {
   props:{
     item:Object
+  },
+  methods:{
+    goto(){
+      this.$emit("goto")
+    }
   }
 
 }

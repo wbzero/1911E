@@ -8,80 +8,80 @@ const routes = [{
     path: '/',
     name: 'Home',
     component: Home,
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
     path: '/login', // 登录页面
     name: 'Login',
     component: () => import('../views/Login.vue'),
-    meta:{
-      show:false
+    meta: {
+      show: false
     }
   },
   {
     path: '/practice',
     name: 'Practice',
     component: () => import('../views/practice/index.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
     path: '/item',
     name: 'Item',
     component: () => import('../views/practice/Item.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
     path: '/item2',
     name: 'Item2',
     component: () => import('../views/practice/Item2.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
     path: '/item3',
     name: 'Item3',
     component: () => import('../views/practice/Item3.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
     path: '/item4',
     name: 'Item4',
     component: () => import('../views/practice/Item4.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
     path: '/item5',
     name: 'Item5',
     component: () => import('../views/practice/Item5.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
     path: '/item6',
     name: 'Item6',
     component: () => import('../views/practice/Item6.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
     path: '/search',
     name: 'Search',
     component: () => import('../views/practice/Search.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     }
   },
   {
@@ -171,7 +171,110 @@ const routes = [{
     }
   },
 
-
+  {
+    path: '/currency',
+    name: 'Currency',
+    component: () => import('../views/user/Currency.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/friends',
+    name: 'Friends',
+    component: () => import('../views/user/Friends.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/star',
+    name: 'Star',
+    component: () => import('../views/user/Star.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/bill',
+    name: 'Bill',
+    component: () => import('../views/user/Bill.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/bills',
+    name: 'Bills',
+    component: () => import('../views/user/Bills.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/billse',
+    name: 'Billse',
+    component: () => import('../views/user/Billse.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/coupon',
+    name: 'Coupon',
+    component: () => import('../views/user/Coupon.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/card',
+    name: 'Card',
+    component: () => import('../views/user/Card.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/diamond',
+    name: 'Diamond',
+    component: () => import('../views/user/Diamond.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/bell',
+    name: 'Bell',
+    component: () => import('../views/user/Bell.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/invition',
+    name: 'Invition',
+    component: () => import('../views/user/Invition.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/service',
+    name: 'Service',
+    component: () => import('../views/user/Service.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/setting',
+    name: 'Setting',
+    component: () => import('../views/user/Setting.vue'),
+    meta: {
+      show: false
+    }
+  }
 ]
 
 const router = new VueRouter({
