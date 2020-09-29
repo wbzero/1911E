@@ -298,7 +298,24 @@ const routes = [{
     meta: {
       show: false
     }
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/lessone/Search.vue'),
+    meta:{
+      show:true
+    }
+  },
+  {
+    path: '/courses',
+    name: 'courses',
+    component: () => import('../views/lessone/courses.vue'),
+    meta:{
+      show:false
+    }
   }
+ 
 ]
 
 const router = new VueRouter({
