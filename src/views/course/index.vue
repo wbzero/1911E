@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <h1>course页面</h1>
     </div>
 </template>
 
