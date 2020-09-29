@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="attention_right">
-            <button>关注</button>
+            <button @click="attention">{{ tex }}</button>
           </div>
         </div>
 
@@ -97,36 +97,188 @@
               </div>
             </div>
           </van-tab>
-          <van-tab title="主讲课程"> </van-tab>
+          <van-tab title="主讲课程">
+            <div class="Boutique">
+              <div class="Boutique_bottom">
+                <ul>
+                  <li v-for="(item, index) in 7" :key="index">
+                    <div class="Boutique_bottom_top">
+                      <p>每时每课特级教师-自主招生冲刺讲座-1代数式求值1</p>
+
+                      <span style="color: gray">共一课时</span>
+                    </div>
+
+                    <div class="Boutique_bottom_img1">
+                      <img
+                        src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png"
+                        alt=""
+                        style="
+                          width: 0.8rem;
+                          height: 0.8rem;
+                          border-radius: 50%;
+                        "
+                      />
+                      <p>杨德胜</p>
+                    </div>
+                    <div class="Boutique_bottom_free">
+                      <span style="color: gray; font-size: 0.3rem"
+                        >100人已报名</span
+                      >
+                      <span style="color: green; font-size: 0.3rem">免费</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </van-tab>
           <van-tab title="学员评价">
-            <div class="imgs">
-              <img src="../../../assets/pinglun.png" alt="" />
+            <div class="evaluate">
+              <div class="evaluate_top">
+                <span>深入浅出(4)</span>
+                <span>言简意核(4)</span>
+                <span>幽默风趣(4)</span>
+              </div>
+              <div class="evaluate_bottom">
+                <ul>
+                  <li v-for="(item, index) in 5" :key="index">
+                    <div class="evaluate_bottom_top">
+                      <img
+                        src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/avatar.jpg"
+                        style="
+                          width: 0.6rem;
+                          height: 0.6rem;
+                          border-radius: 50%;
+                        "
+                      />
+                      <div class="starts">
+                        <van-rate v-model="value" size="13px" color="#EA7A2F" />
+                      </div>
+                    </div>
+                    <div class="evaluate_bottom_content">
+                      <span>深入浅出(4)</span>
+                      <span>言简意核(4)</span>
+                      <span>幽默风趣(4)</span>
+                      <span>深入浅出(4)</span>
+                      <span>言简意核(4)</span>
+                      <span>幽默风趣(4)</span>
+                      <span>深入浅出(4)</span>
+                      <span>言简意核(4)</span>
+                      <span>幽默风趣(4)</span>
+                      <span>言简意核(4)</span>
+                      <span>幽默风趣(4)</span>
+                    </div>
+                    <div class="evaluate_bottom_bot">
+                      谢谢老师!十分有帮助
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </van-tab>
         </van-tabs>
       </div>
     </div>
-    <button class="btn">立即预约</button>
+    <button class="btn" @click="appointment">立即预约</button>
   </div>
 </template>
 
 <script>
+import { Toast } from "vant";
 export default {
   data() {
     return {
       active: 0,
+      tex: "关注",
+      value: 4,
     };
   },
   methods: {
+    // 立即预约
+    appointment(){
+      this.$router.push("/appointment")
+    },
     // 点击返回
     back() {
       window.history.back();
+    },
+    attention() {
+      if (this.tex == "关注") {
+        Toast.success("已关注");
+        setTimeout(() => {
+          this.tex = "已关注";
+        }, 2500);
+      } else if (this.tex == "已关注") {
+        Toast.success("已取消");
+        setTimeout(() => {
+          this.tex = "关注";
+        }, 2500);
+      }
     },
   },
 };
 </script>
 
 <style scoped>
+/* 学员评价 */
+.evaluate {
+  width: 100%;
+  /* height: 10vh; */
+  background: #fff;
+}
+.evaluate_top {
+  width: 100%;
+  /* height: 1rem; */
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.2rem 0.7rem;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+.evaluate_top span {
+  border: 1px solid #ea7a2f;
+  color: #ea7a2f;
+  padding: 0.1rem 0.2rem;
+}
+.evaluate_bottom {
+  width: 100%;
+  background: #fff;
+}
+.evaluate_bottom ul {
+  width: 100%;
+}
+
+.evaluate_bottom ul li {
+  height: 5rem;
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+  padding: 0 0.3rem;
+}
+.evaluate_bottom_top {
+  height: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+.starts {
+  margin: 0 0.7rem;
+}
+.evaluate_bottom_content {
+  width: 100%;
+  display: flex;
+ flex-wrap: wrap;
+ padding: 0 0.3rem;
+}
+.evaluate_bottom_content span {
+  background: #f5f5f5;
+  color: #8c8c8c;
+  padding: 0.1rem 0.2rem;
+  margin: 0.2rem 0.2rem;
+}
+.evaluate_bottom_bot {
+  margin: 0.1rem 0.5rem;
+  color: gray;
+}
+
 /* 讲师介绍 */
 .tearch_bottom {
   width: 100%;
@@ -175,10 +327,10 @@ export default {
   align-items: center;
 }
 .attention {
-  width: 100%;
+  width: 95%;
   height: 2.7rem;
   position: relative;
-  background: #fff;
+  /* background: #fff; */
 
   margin: -1.5rem auto;
 }
@@ -186,13 +338,14 @@ export default {
   width: 100%;
   height: 1.5rem;
   background: #fff;
+  margin: 0 auto;
 
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
   padding: 0 0.3rem;
   align-items: center;
-  border-radius: 0.1rem;
+  border-radius: 0.1rem 0.1rem 0 0;
 }
 .attention_left {
   display: flex;
@@ -226,6 +379,7 @@ export default {
   color: #fff;
   position: fixed;
   bottom: 0rem;
+  font-size: 0.3rem;
 }
 .imgs {
   width: 100%;
@@ -241,21 +395,83 @@ export default {
 }
 .attention_bottoms {
   width: 100%;
-  height: 0.8rem;
+  height: 1.5rem;
   /* border: 1px solid red; */
+  background: #fff;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
   padding: 0 0.3rem;
   align-items: center;
+  margin: -0.5rem 0;
 }
-.attention_bottoms span{
+.attention_bottoms span {
   display: inline-block;
-  background: #FFE4D3;
-  color: #EA7A2F;
+  background: #ffe4d3;
+  color: #ea7a2f;
   padding: 0.1rem 0.2rem;
   border-radius: 0.35rem;
   font-size: 0.25rem;
+}
 
+/* 主讲课程 */
+.Boutique_bottom_free {
+  width: 100%;
+  height: 0.8rem;
+  /* border: 1px solid red; */
+  margin: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+.Boutique_bottom_img1 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 0.6rem;
+}
+.Boutique_bottom_img1 p {
+  margin: 0 0.3rem;
+  color: gray;
+}
+.Boutique {
+  width: 100%;
+  /* background: skyblue; */
+}
+.Boutique_top {
+  width: 95%;
+  height: 0.5rem;
+  /* background: #ffff; */
+  line-height: 0.5rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  border-left: 4px solid #eb6100;
+}
+.Boutique_bottom {
+  width: 95%;
+  margin: 0rem auto;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+  overflow: hidden;
+}
+.Boutique_bottom ul {
+  width: 100%;
+}
+.Boutique_bottom ul li {
+  width: 100%;
+  height: 4rem;
+  background: #fff;
+  margin: 0.2rem 0;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  overflow: hidden;
+}
+.Boutique_bottom_top {
+  margin: 0.3rem 0;
+}
+.Boutique_bottom_top p {
+  font-size: 0.4rem;
 }
 </style>

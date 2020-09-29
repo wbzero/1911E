@@ -21,7 +21,7 @@ const routes = [{
     }
   },
   {
-    path: '/lessone',  // 课程页面
+    path: '/lessone', // 课程页面
     name: 'Lessone',
     component: () => import('../views/lessone/index.vue'),
     meta: {
@@ -29,7 +29,7 @@ const routes = [{
     }
   },
   {
-    path: '/course',  // 约课记录页面
+    path: '/course', // 约课记录页面
     name: 'Course',
     component: () => import('../views/course/index.vue'),
     meta: {
@@ -40,8 +40,8 @@ const routes = [{
     path: '/coach', // 约课记录里的一对一辅导
     name: 'coach',
     component: () => import('../views/course/Coach.vue'),
-    meta:{
-      show:false
+    meta: {
+      show: false
     }
   },
   {
@@ -70,7 +70,7 @@ const routes = [{
       show: false
     }
   },
-  
+
   // 名师阵容跳转
   {
     path: '/tearch',
@@ -98,8 +98,24 @@ const routes = [{
       show: false
     }
   },
+  {
+    path: '/study',
+    name: 'study',
+    component: () => import('../views/home/components/Study.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/video',
+    name: 'Video',
+    component: () => import('../views/home/components/Video.vue'),
+    meta: {
+      show: false
+    }
+  },
 
-  
+
 ]
 
 const router = new VueRouter({
