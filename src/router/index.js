@@ -4,8 +4,7 @@ import Home from '../views/home/index.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'Home',
     component: Home,
@@ -14,7 +13,7 @@ const routes = [
     }
   },
   {
-    path: '/login',
+    path: '/login', // 登录页面
     name: 'Login',
     component: () => import('../views/Login.vue'),
     meta:{
@@ -108,7 +107,87 @@ const routes = [
     meta:{
       show:true
     }
-  }
+  },
+  {
+    path: '/lessone',  // 课程页面
+    name: 'Lessone',
+    component: () => import('../views/lessone/index.vue'),
+    meta: {
+      show: true
+    }
+  },
+  {
+    path: '/course',  // 约课记录页面
+    name: 'Course',
+    component: () => import('../views/course/index.vue'),
+    meta: {
+      show: true
+    }
+  },
+  {
+    path: '/coach', // 约课记录里的一对一辅导
+    name: 'coach',
+    component: () => import('../views/course/Coach.vue'),
+    meta:{
+      show:false
+    }
+  },
+  {
+    path: '/practice', // 练习页面
+    name: 'Practice',
+    component: () => import('../views/practice/index.vue'),
+    meta: {
+      show: true
+    }
+  },
+  {
+    path: '/user', // 我的页面
+    name: 'User',
+    component: () => import('../views/user/index.vue'),
+    meta: {
+      show: true
+    }
+  },
+
+  // 学习日历
+  {
+    path: '/StudyCalendar',
+    name: 'StudyCalendar',
+    component: () => import('../views/home/components/StudyCalendar.vue'),
+    meta: {
+      show: false
+    }
+  },
+  
+  // 名师阵容跳转
+  {
+    path: '/tearch',
+    name: 'tearch',
+    component: () => import('../views/home/components/Tearch.vue'),
+    meta: {
+      show: false
+    }
+  },
+  // 精品课程
+  {
+    path: '/Coursedetail',
+    name: 'Coursedetail',
+    component: () => import('../views/home/components/Coursedetail.vue'),
+    meta: {
+      show: false
+    }
+  },
+  // 讲师详情
+  {
+    path: '/Lecturer',
+    name: 'Lecturer',
+    component: () => import('../views/home/components/Lecturer.vue'),
+    meta: {
+      show: false
+    }
+  },
+
+  
 ]
 
 const router = new VueRouter({

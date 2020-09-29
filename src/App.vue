@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <router-view v-if="$route.meta.show==true" />
     <van-tabbar route active-color="#FEAF7A" >
       <van-tabbar-item to="/" icon="wap-home">首页</van-tabbar-item>
@@ -11,7 +10,5 @@
     </van-tabbar>
   </div>
 </template>
-
 <style lang="scss">
-
 </style>
