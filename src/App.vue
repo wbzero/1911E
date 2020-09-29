@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <router-view v-if="$route.meta.show==true" />
-    <van-tabbar route active-color="#FEAF7A" >
+    <router-view />
+    <van-tabbar route active-color="#FEAF7A" v-if="$route.meta.show==true" >
       <van-tabbar-item to="/" icon="wap-home">首页</van-tabbar-item>
       <van-tabbar-item to="/lessone" icon="column">课程</van-tabbar-item>
       <van-tabbar-item to="/course" icon="youzan-shield">约课记录</van-tabbar-item>
