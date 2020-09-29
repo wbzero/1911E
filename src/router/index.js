@@ -46,6 +46,22 @@ const routes = [
     }
   },
   {
+    path: '/appointment', // 约课记录里的一对一辅导中的预约课程
+    name: 'appointment',
+    component: () => import('../views/course/Appointment.vue'),
+    meta:{
+      show:false
+    }
+  },
+  {
+    path: '/search', // 约课记录里的一对一辅导中的搜索
+    name: 'search',
+    component: () => import('../views/course/Search.vue'),
+    meta:{
+      show:false
+    }
+  },
+  {
     path: '/practice', // 练习页面
     name: 'Practice',
     component: () => import('../views/practice/index.vue'),
