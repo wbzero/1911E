@@ -52,15 +52,7 @@ const routes = [{
       show: true
     }
   },
-  // 特色课
-  {
-    path: '/cousers',
-    name: 'Cousers',
-    component: () => import('../views/home/components/Course.vue'),
-    meta: {
-      show: true
-    }
-  },
+
   // 学习日历
   {
     path: '/StudyCalendar',
@@ -70,15 +62,7 @@ const routes = [{
       show: false
     }
   },
-  // 一对一辅导
-  {
-    path: '/Oto',
-    name: 'Oto',
-    component: () => import('../views/home/components/Oto.vue'),
-    meta: {
-      show: false
-    }
-  },
+  
   // 名师阵容跳转
   {
     path: '/tearch',

@@ -193,13 +193,13 @@
 export default {
   methods: {
     cousers() {
-      this.$router.push("/cousers");
+      this.$router.push("/lessone");
     },
     StudyCalendar() {
       this.$router.push("/StudyCalendar");
     },
     oto() {
-      this.$router.push("/Oto");
+      this.$router.push("/coach");
     },
     // 讲师详情
     tearch(){
