@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <template>
     <div class="login_body">
      <div class="img" v-if="isshow">
@@ -107,5 +107,3 @@
     }
 }
 </style>
-=======
->>>>>>> 78e1040a08a7e7f1025604419c7a8d0787b53c99

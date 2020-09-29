@@ -1,4 +1,8 @@
 <template>
+<<<<<<< HEAD
+    <div>
+        <h1>user页面</h1>
+=======
     <div class="user_body">
         <div class="bgcolor"></div>
         <div class="main_box">
@@ -78,10 +82,14 @@
                 </div>
             </div>
         </div>
+>>>>>>> df42cbbfac4c2eb7ef749948c750aee611984c83
     </div>
 </template>
 
 <script>
+<<<<<<< HEAD
+    export default {
+=======
 import gird from "./components/Gird"
     export default {
         data() {
@@ -108,11 +116,15 @@ import gird from "./components/Gird"
         components:{
            "my-gird": gird
         }
+>>>>>>> df42cbbfac4c2eb7ef749948c750aee611984c83
 
     }
 </script>
 
 <style scoped lang='scss'>
+<<<<<<< HEAD
+
+=======
 .user_body{
     width: 100%;
     height: 100%;
@@ -209,4 +221,5 @@ import gird from "./components/Gird"
       }
   }
 }
+>>>>>>> df42cbbfac4c2eb7ef749948c750aee611984c83
 </style>
