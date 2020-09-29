@@ -1,19 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div>
-        <h1>course页面</h1>
-    </div>
-</template>
-
-<script>
-    export default {
-
-    }
-</script>
-
-<style scoped lang='scss'>
-
-=======
   <div>
     <van-nav-bar>
       <template #title>
@@ -91,5 +76,4 @@ export default {
     color: #fff;
     margin-left: 40px;
 }
->>>>>>> df42cbbfac4c2eb7ef749948c750aee611984c83
 </style>

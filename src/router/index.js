@@ -21,33 +21,9 @@ const routes = [{
     }
   },
   {
-    path: '/lessone',
-    name: 'Lessone',
-    component: () => import('../views/lessone/index.vue'),
-    meta:{
-      show:true
-    }
-  },
-  {
-    path: '/course',
-    name: 'Course',
-    component: () => import('../views/course/index.vue'),
-    meta:{
-      show:true
-    }
-  },
-  {
     path: '/practice',
     name: 'Practice',
     component: () => import('../views/practice/index.vue'),
-    meta:{
-      show:true
-    }
-  },
-  {
-    path: '/user',
-    name: 'User',
-    component: () => import('../views/user/index.vue'),
     meta:{
       show:true
     }
@@ -130,14 +106,6 @@ const routes = [{
     component: () => import('../views/course/Coach.vue'),
     meta: {
       show: false
-    }
-  },
-  {
-    path: '/practice', // 练习页面
-    name: 'Practice',
-    component: () => import('../views/practice/index.vue'),
-    meta: {
-      show: true
     }
   },
   {
