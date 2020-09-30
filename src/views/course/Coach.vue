@@ -103,72 +103,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-  export default {
-    data() {
-      return {
-        value1: 0,
-        value2: "a",
-        option1: [{
-            text: "选择上课时间",
-            value: 0
-          },
-          {
-            text: "选择上课时间",
-            value: 1
-          },
-          {
-            text: "选择上课时间",
-            value: 2
-          },
-          {
-            text: "选择上课时间",
-            value: 2
-          },
-          {
-            text: "选择上课时间",
-            value: 2
-          },
-          {
-            text: "选择上课时间",
-            value: 2
-          },
-          {
-            text: "选择上课时间",
-            value: 2
-          },
-        ],
-        option2: [{
-            text: "选择老师条件",
-            value: "a"
-          },
-          {
-            text: "好评排序",
-            value: "b"
-          },
-          {
-            text: "销量排序",
-            value: "c"
-          },
-          {
-            text: "销量排序",
-            value: "c"
-          },
-          {
-            text: "销量排序",
-            value: "c"
-          },
-          {
-            text: "销量排序",
-            value: "c"
-          },
-          {
-            text: "销量排序",
-            value: "c"
-          },
-        ],
-      }
-=======
 export default {
   data() {
     return {
@@ -184,7 +118,6 @@ export default {
     goAppointment() {
       console.log("dfgn");
       this.$router.push("/appointment");
->>>>>>> 730c3dda96e2b2b63b0872cc6aa8767a65f03725
     },
     methods: {
       left() {
@@ -198,92 +131,6 @@ export default {
         this.$router.push("/appointment");
       },
     },
-<<<<<<< HEAD
-  };
-</script>
-
-<style scoped>
-  .van-dropdown-menu {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0.9rem;
-  }
-
-  .fudao_body {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    background: #fff;
-  }
-
-  .left {
-    color: #727272;
-    font-size: 0.5rem;
-  }
-
-  .right {
-    color: #727272;
-    font-size: 0.5rem;
-  }
-
-  .select {
-    margin-top: 0.9rem;
-    width: 100%;
-    height: 7vh;
-    color: #969696;
-    font-size: 0.2rem;
-  }
-
-  .teachers {
-    width: 100%;
-    background: #f0f2f5;
-  }
-
-  .teacher_s {
-    width: 95%;
-    height: 13vh;
-    background: #fff;
-    border-radius: 0.15rem;
-    margin: 0.2rem;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0.5rem 0.3rem;
-  }
-
-  .yu_yue {
-    width: 1.2rem;
-    height: 0.6rem;
-    line-height: 0.6rem;
-    text-align: center;
-    color: #eb6e17;
-    background: #ebeefe;
-    border-radius: 0.3rem;
-    font-size: 0.25rem;
-  }
-
-  .tearch_img {
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .img_img {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background: #c4c3c3;
-    margin-top: -0.1rem;
-  }
-
-  .img_content {
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-=======
     goSearch() {
       this.$router.push("/search");
     },
@@ -447,5 +294,4 @@ export default {
   background: #f5f5f5;
   margin: 0.1rem 0.25rem;
 }
->>>>>>> 730c3dda96e2b2b63b0872cc6aa8767a65f03725
 </style>
