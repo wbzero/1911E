@@ -2,72 +2,44 @@
     "data": [{
         "id": 1,
         "img": "https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png",
-<<<<<<< HEAD
         "title": "每时每课特级教师-自主招生冲刺讲座6-多元方程组与可转化为多元方程组问题",
-=======
-        "title": "李老师16号到22号地理大课堂开课啦",
->>>>>>> 024a963ae5f2eea7f28ac8741bdd7c1a0f2dd176
         "name": "杨德胜"
     },
     {
         "id": 2,
         "img": "https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png",
-<<<<<<< HEAD
         "title": "每时每课特级教师-自主招生冲刺讲座8-二次函数2--根的分布",
-=======
-        "title": "李老师16号到22号地理大课堂开课啦",
->>>>>>> 024a963ae5f2eea7f28ac8741bdd7c1a0f2dd176
         "name": "杨德胜"
     },
 
     {
         "id": 3,
         "img": "https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png",
-<<<<<<< HEAD
         "title": "每时每课特级教师-自主招生冲刺讲座-1代数式求值1",
-=======
-        "title": "李老师16号到22号地理大课堂开课啦",
->>>>>>> 024a963ae5f2eea7f28ac8741bdd7c1a0f2dd176
         "name": "杨德胜"
     },
     {
         "id": 4,
         "img": "https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/20192TSKKmyNso1572684453.png",
-<<<<<<< HEAD
         "title": "初中重点几何知识点——第三讲：平行四边形与矩形、菱形、正方形的关系",
-=======
-        "title": "李老师16号到22号地理大课堂开课啦",
->>>>>>> 024a963ae5f2eea7f28ac8741bdd7c1a0f2dd176
         "name": "马学斌"
     },
     {
         "id": 5,
         "img": "https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/20192TSKKmyNso1572684453.png",
-<<<<<<< HEAD
         "title": "初中重点几何知识点——第九讲： 用描点法画出二次函数y＝－x^2的图象",
-=======
-        "title": "李老师16号到22号地理大课堂开课啦",
->>>>>>> 024a963ae5f2eea7f28ac8741bdd7c1a0f2dd176
         "name": "马学斌"
     },
     {
         "id": 6,
         "img": "https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/20192TSKKmyNso1572684453.png",
-<<<<<<< HEAD
         "title": "初中重点几何知识点——第二讲：三角形对平行四边形的影响",
-=======
-        "title": "李老师16号到22号地理大课堂开课啦",
->>>>>>> 024a963ae5f2eea7f28ac8741bdd7c1a0f2dd176
         "name": "马学斌"
     },
     {
         "id": 7,
         "img": "https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/20192TSKKmyNso1572684453.png",
-<<<<<<< HEAD
         "title": "初中重点几何知识点——第八讲： 用描点法画二次函数y＝x^2的图象",
-=======
-        "title": "李老师16号到22号地理大课堂开课啦",
->>>>>>> 024a963ae5f2eea7f28ac8741bdd7c1a0f2dd176
         "name": "马学斌"
     }
 ]

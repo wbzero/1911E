@@ -77,6 +77,54 @@ const routes = [{
     }
   },
   {
+    path: '/item7',
+    name: 'Item7',
+    component: () => import('../views/practice/Item7.vue'),
+    meta:{
+      show:true
+    },
+      redirect: '/item7_1',
+    children: [
+      {
+
+        path: '/item7_1',
+        name: 'item7_1',
+        component: () => import('../views/practice/itme7/item7_1.vue'),
+      },
+      {
+        path: '/item7_2',
+        name: 'item7_2',
+        component: () => import('../views/practice/itme7/item7_2.vue'),
+      },
+      {
+        path: '/item7_3',
+        name: 'item7_3',
+        component: () => import('../views/practice/itme7/item7_3.vue'),
+      },
+      {
+        path: '/item7_4',
+        name: 'item7_4',
+        component: () => import('../views/practice/itme7/item7_4.vue'),
+      },
+      {
+        path: '/item7_5',
+        name: 'item7_5',
+        component: () => import('../views/practice/itme7/item7_5.vue'),
+      },
+      {
+        path: '/item7_6',
+        name: 'item7_6',
+        component: () => import('../views/practice/itme7/item7_6.vue'),
+      },
+      {
+        path: '/item7_7',
+        name: 'item7_7',
+        component: () => import('../views/practice/itme7/item7_7.vue'),
+      }
+
+    ]
+  },
+  {
     path: '/search',
     name: 'Search',
     component: () => import('../views/practice/Search.vue'),
