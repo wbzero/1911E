@@ -18,13 +18,13 @@
         <div class="attentions">
           <div class="attention_left">
             <img
-              src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png"
+              :src="list.img"
               style="width: 0.8rem; height: 0.8rem; border-radius: 50%"
             />
             <div class="attention_left_div">
               <div class="attention_left_h">
-                <h3>杨德胜</h3>
-                <p style="color: rgba(246, 195, 161)">M20</p>
+                <h3>{{list.title}}</h3>
+                <p style="color: rgba(246, 195, 161)">{{list.mm}}</p>
               </div>
               <span style="color: gray">男 30年教龄</span>
             </div>
@@ -151,7 +151,12 @@
                         "
                       />
                       <div class="starts">
-                        <van-rate v-model="value" size="13px" color="#EA7A2F" readonly/>
+                        <van-rate
+                          v-model="value"
+                          size="13px"
+                          color="#EA7A2F"
+                          readonly
+                        />
                       </div>
                     </div>
                     <div class="evaluate_bottom_content">
@@ -167,9 +172,7 @@
                       <span>言简意核(4)</span>
                       <span>幽默风趣(4)</span>
                     </div>
-                    <div class="evaluate_bottom_bot">
-                      谢谢老师!十分有帮助
-                    </div>
+                    <div class="evaluate_bottom_bot">谢谢老师!十分有帮助</div>
                   </li>
                 </ul>
               </div>
@@ -185,17 +188,28 @@
 <script>
 import { Toast } from "vant";
 export default {
+  mounted() {
+    this.$axios.get("http://localhost:8080/list.json").then((res) => {
+      res.data.list.filter((item) => {
+        if (item.id == this.val) {
+          this.list = item;
+        }
+      });
+    });
+  },
   data() {
     return {
+      list: {},
       active: 0,
       tex: "关注",
       value: 4,
+      val: this.$route.query.val,
     };
   },
   methods: {
     // 立即预约
-    appointment(){
-      this.$router.push("/appointment")
+    appointment() {
+      this.$router.push("/appointment");
     },
     // 点击返回
     back() {
@@ -265,8 +279,8 @@ export default {
 .evaluate_bottom_content {
   width: 100%;
   display: flex;
- flex-wrap: wrap;
- padding: 0 0.3rem;
+  flex-wrap: wrap;
+  padding: 0 0.3rem;
 }
 .evaluate_bottom_content span {
   background: #f5f5f5;

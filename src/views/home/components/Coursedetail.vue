@@ -20,11 +20,16 @@
         </span>
       </div>
       <div class="Course_details_list">
-        <span class="starts"
-          ><van-rate @change="collect" v-model="value1" :count="1"
-        /></span>
+        <span class="starts">
+          <van-icon
+            name="star-o"
+            @click="collect"
+            size="20px"
+            @dblclick="collects"
+          />
+        </span>
         <p>
-          每时每课特级教师-自主招生冲刺讲座6-多元方程组与可转化为多元方程组问题
+          {{ list.title }}
         </p>
         <span style="color: #fc5500; font-size: 0.3rem">免费</span>
         <div>共1课时 | 139人已报名</div>
@@ -33,11 +38,11 @@
         <p style="margin: 0.2rem 0; font-size: 0.3rem">教学团队</p>
         <div>
           <img
-            src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png"
+            :src="list.img"
             style="width: 0.8rem; height: 0.8rem; border-radius: 50%"
             @click="gotearch"
           />
-          <p>杨德胜</p>
+          <p>{{ list.name }}</p>
         </div>
       </div>
       <!-- 课程介绍 -->
@@ -91,12 +96,25 @@
 <script>
 import { Toast } from "vant";
 export default {
+  mounted() {
+    this.$axios.get("http://localhost:8080/data1.json").then((res) => {
+      // console.log(res.data.data);
+      res.data.data.filter((item) => {
+        if (item.id == this.val1) {
+          this.list = item;
+        }
+      });
+    });
+  },
   data() {
     return {
       value: 5,
       value1: 0,
       tex: "立即报名",
       show: false,
+      val1: this.$route.query.val1,
+      list: {},
+      showList: [],
     };
   },
   methods: {
@@ -104,16 +122,18 @@ export default {
       window.history.back();
     },
     collect() {
-      if (this.value1 == 0) {
-        Toast.success("收藏成功");
-        this.value1 = 1;
-      } else if (this.value1 == 1) {
-        this.value1 = 0;
-        Toast.success("取消收藏");
-      }
+      Toast.success("收藏成功");
+      this.showList.push(this.list);
+      console.log(this.showList);
+      localStorage.showList = JSON.stringify(this.showList);
+    },
+    collects() {
+      localStorage.removeItem("showList");
+      Toast.success("取消收藏");
     },
     apply() {
       if (this.tex == "立即报名") {
+        localStorage.setItem("apply", "app");
         Toast.success("成功");
         setTimeout(() => {
           this.tex = "立即学习";
