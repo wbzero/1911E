@@ -151,7 +151,7 @@
                         "
                       />
                       <div class="starts">
-                        <van-rate v-model="value" size="13px" color="#EA7A2F" />
+                        <van-rate v-model="value" size="13px" color="#EA7A2F" readonly/>
                       </div>
                     </div>
                     <div class="evaluate_bottom_content">

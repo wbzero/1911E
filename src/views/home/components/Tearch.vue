@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="attention_right">
-          <button>关注</button>
+          <button @click="attention">{{tex}}</button>
         </div>
       </div>
       <div class="tearch_bottom">
@@ -92,7 +92,11 @@
             <div class="Boutique">
               <div class="Boutique_bottom">
                 <ul>
-                  <li v-for="(item, index) in 7" :key="index">
+                  <li
+                    v-for="(item, index) in 7"
+                    :key="index"
+                    @click="Coursedetail"
+                  >
                     <div class="Boutique_bottom_top">
                       <p>每时每课特级教师-自主招生冲刺讲座-1代数式求值1</p>
 
@@ -130,15 +134,17 @@
         </van-tabs>
       </div>
     </div>
-    <button class="btn">立即预约</button>
+    <button class="btn" @click="appointment">立即预约</button>
   </div>
 </template>
 
 <script>
+import { Toast } from "vant";
 export default {
   data() {
     return {
       active: 0,
+      tex: "关注",
     };
   },
   methods: {
@@ -146,7 +152,27 @@ export default {
     back() {
       window.history.back();
     },
-  },
+    Coursedetail() {
+      this.$router.push("/Coursedetail");
+    },
+    attention() {
+      if (this.tex == "关注") {
+        Toast.success("已关注");
+        setTimeout(() => {
+          this.tex = "已关注";
+        }, 2500);
+      } else if (this.tex == "已关注") {
+        Toast.success("已取消");
+        setTimeout(() => {
+          this.tex = "关注";
+        }, 2500);
+      }
+    },
+ appointment(){
+   this.$router.push("/appointment")
+ }
+ 
+ },
 };
 </script>
 
@@ -243,6 +269,7 @@ export default {
   color: #fff;
   position: fixed;
   bottom: 0rem;
+  font-size: 0.3rem;
 }
 .imgs {
   width: 100%;
