@@ -17,19 +17,19 @@
       <div class="attention">
         <div class="attention_left">
           <img
-            src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png"
+            :src="list.img"
             style="width: 0.8rem; height: 0.8rem; border-radius: 50%"
           />
           <div class="attention_left_div">
             <div class="attention_left_h">
-              <h3>杨德胜</h3>
+              <h3>{{ list.name }}</h3>
               <p style="color: rgba(246, 195, 161)">M20</p>
             </div>
             <span style="color: gray">男 30年教龄</span>
           </div>
         </div>
         <div class="attention_right">
-          <button @click="attention">{{tex}}</button>
+          <button @click="attention">{{ tex }}</button>
         </div>
       </div>
       <div class="tearch_bottom">
@@ -145,7 +145,22 @@ export default {
     return {
       active: 0,
       tex: "关注",
+      list: {},
+      userList: [],
+      val: this.$route.query.val,
     };
+  },
+
+  mounted() {
+    this.$axios.get("http://localhost:8080/data.json").then((res) => {
+      console.log(res.data.data);
+      res.data.data.filter((item) => {
+        if (item.id == this.val) {
+          this.list = item;
+          console.log(item);
+        }
+      });
+    });
   },
   methods: {
     // 点击返回
@@ -158,21 +173,23 @@ export default {
     attention() {
       if (this.tex == "关注") {
         Toast.success("已关注");
+        this.userList.push(this.list);
+        localStorage.userList = JSON.stringify(this.userList);
         setTimeout(() => {
           this.tex = "已关注";
         }, 2500);
       } else if (this.tex == "已关注") {
         Toast.success("已取消");
+        localStorage.removeItem("userList")
         setTimeout(() => {
           this.tex = "关注";
         }, 2500);
       }
     },
- appointment(){
-   this.$router.push("/appointment")
- }
- 
- },
+    appointment() {
+      this.$router.push("/appointment");
+    },
+  },
 };
 </script>
 
