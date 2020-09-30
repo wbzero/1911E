@@ -308,9 +308,9 @@ const routes = [{
     }
   },
   {
-    path: '/courses',
-    name: 'courses',
-    component: () => import('../views/lessone/courses.vue'),
+    path: '/info',
+    name: "Info",
+    component: () => import('../views/user/Info.vue'),
     meta:{
       show:false
     }
