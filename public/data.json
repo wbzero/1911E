@@ -1,0 +1,93 @@
+[
+    {
+        "id": 0,
+        "titl": "求导题库",
+        "set": [
+            {
+                "img": "http://localhost:8080/img/1.jpg",
+                "title": "洛必达法则",
+                "jg": 16,
+                "num": 0,
+                "show": false
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "titl": "极限题库",
+        "set": [
+            {
+                "img": "http://localhost:8080/img/3.jpg",
+                "title": "数学",
+                "jg": 10.6,
+                "num": 0,
+                "show": false
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "titl": "化学",
+        "set": [
+            {
+                "img": "http://localhost:8080/img/3.jpg",
+                "title": "化学实验",
+                "jg": 10.6,
+                "num": 0,
+                "show": false
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "titl": "生物",
+        "set": [
+            {
+                "img": "http://localhost:8080/img/3.jpg",
+                "title": "高中生物",
+                "jg": 10.6,
+                "num": 0,
+                "show": false
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "titl": "数学",
+        "set": [
+            {
+                "img": "http://localhost:8080/img/3.jpg",
+                "title": "高中数学",
+                "jg": 10.6,
+                "num": 0,
+                "show": false
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "titl": "物理",
+        "set": [
+            {
+                "img": "http://localhost:8080/img/3.jpg",
+                "title": "物理竞技",
+                "jg": 10.6,
+                "num": 0,
+                "show": false
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "titl": "英语",
+        "set": [
+            {
+                "img": "http://localhost:8080/img/3.jpg",
+                "title": "高中英语",
+                "jg": 10.6,
+                "num": 0,
+                "show": false
+            }
+        ]
+    }
+]
