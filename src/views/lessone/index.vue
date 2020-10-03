@@ -29,10 +29,13 @@
             <div class="tm-kind">
               <p>学科</p>
               <div class="tmk-item tmk_item1">
-                <span v-for="(item, index) in list1" :key="index"   @click="btn1(index)"
-                  :class="{ zhi1: is1 == index }">{{
-                  item
-                }}</span>
+                <span
+                  v-for="(item, index) in list1"
+                  :key="index"
+                  @click="btn1(index)"
+                  :class="{ zhi1: is1 == index }"
+                  >{{ item }}</span
+                >
               </div>
             </div>
             <div class="seach-btn">
@@ -67,11 +70,13 @@
 
     <div class="neirong" @click="course">
       <!-- 内容 -->
-      <div class="index_nrirong">
+      <div class="index_nrirong"  v-for="(item, index) in list2"
+              :key="index"
+              @click="Coursedetail(item.id)">
         <div class="index_nrirong_one">
           <div class="index_neirong_two">
             <div style="font-size: 0.35rem">
-              李老师16号到22号地理大课堂开课啦
+             {{item.title}}
             </div>
             <div>
               <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
@@ -79,12 +84,12 @@
               >
             </div>
             <br />
-            <p>
-              <img
-                src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-                alt=""
-              /><span>李青</span>
-            </p>
+            <div class="why">
+              <span> <img :src="item.img" alt=""/>
+              <span>{{item.name}}</span>
+              </span>
+              <span><img src="http://localhost:8080/img/11.png" alt="" v-show="show" style="width:1rem;height:1rem"></span>
+            </div>
           </div>
 
           <div class="index_neirong_yi">
@@ -94,213 +99,22 @@
         </div>
       </div>
 
-      <!-- 内容 -->
-      <div class="index_nrirong">
-        <div class="index_nrirong_one">
-          <div class="index_neirong_two">
-            <div style="font-size: 0.35rem">
-              李老师16号到22号地理大课堂开课啦
-            </div>
-            <div>
-              <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
-                >03月16日 18:30~03月22日 15:00 | 共8课时</span
-              >
-            </div>
-            <br />
-            <p>
-              <img
-                src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-                alt=""
-              /><span>李青</span>
-            </p>
-          </div>
-
-          <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray">118人已报名</span>
-            <span style="font-size: 0.3rem; color: #44a426">免费</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 内容 -->
-      <div class="index_nrirong">
-        <div class="index_nrirong_one">
-          <div class="index_neirong_two">
-            <div style="font-size: 0.35rem">
-              李老师16号到22号地理大课堂开课啦
-            </div>
-            <div>
-              <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
-                >03月16日 18:30~03月22日 15:00 | 共8课时</span
-              >
-            </div>
-            <br />
-            <p>
-              <img
-                src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-                alt=""
-              /><span>李青</span>
-            </p>
-          </div>
-
-          <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray">118人已报名</span>
-            <span style="font-size: 0.3rem; color: #44a426">免费</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 内容 -->
-      <div class="index_nrirong">
-        <div class="index_nrirong_one">
-          <div class="index_neirong_two">
-            <div style="font-size: 0.35rem">
-              李老师16号到22号地理大课堂开课啦
-            </div>
-            <div>
-              <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
-                >03月16日 18:30~03月22日 15:00 | 共8课时</span
-              >
-            </div>
-            <br />
-            <p>
-              <img
-                src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-                alt=""
-              /><span>李青</span>
-            </p>
-          </div>
-
-          <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray">118人已报名</span>
-            <span style="font-size: 0.3rem; color: #44a426">免费</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 内容 -->
-      <div class="index_nrirong">
-        <div class="index_nrirong_one">
-          <div class="index_neirong_two">
-            <div style="font-size: 0.35rem">
-              李老师16号到22号地理大课堂开课啦
-            </div>
-            <div>
-              <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
-                >03月16日 18:30~03月22日 15:00 | 共8课时</span
-              >
-            </div>
-            <br />
-            <p>
-              <img
-                src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-                alt=""
-              /><span>李青</span>
-            </p>
-          </div>
-
-          <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray">118人已报名</span>
-            <span style="font-size: 0.3rem; color: #44a426">免费</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 内容 -->
-      <div class="index_nrirong">
-        <div class="index_nrirong_one">
-          <div class="index_neirong_two">
-            <div style="font-size: 0.35rem">
-              李老师16号到22号地理大课堂开课啦
-            </div>
-            <div>
-              <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
-                >03月16日 18:30~03月22日 15:00 | 共8课时</span
-              >
-            </div>
-            <br />
-            <p>
-              <img
-                src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-                alt=""
-              /><span>李青</span>
-            </p>
-          </div>
-
-          <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray">118人已报名</span>
-            <span style="font-size: 0.3rem; color: #44a426">免费</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 内容 -->
-      <div class="index_nrirong">
-        <div class="index_nrirong_one">
-          <div class="index_neirong_two">
-            <div style="font-size: 0.35rem">
-              李老师16号到22号地理大课堂开课啦
-            </div>
-            <div>
-              <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
-                >03月16日 18:30~03月22日 15:00 | 共8课时</span
-              >
-            </div>
-            <br />
-            <p>
-              <img
-                src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-                alt=""
-              /><span>李青</span>
-            </p>
-          </div>
-
-          <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray">118人已报名</span>
-            <span style="font-size: 0.3rem; color: #44a426">免费</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 内容 -->
-      <div class="index_nrirong">
-        <div class="index_nrirong_one">
-          <div class="index_neirong_two">
-            <div style="font-size: 0.35rem">
-              李老师16号到22号地理大课堂开课啦
-            </div>
-            <div>
-              <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
-                >03月16日 18:30~03月22日 15:00 | 共8课时</span
-              >
-            </div>
-            <br />
-            <p>
-              <img
-                src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-                alt=""
-              /><span>李青</span>
-            </p>
-          </div>
-
-          <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray">118人已报名</span>
-            <span style="font-size: 0.3rem; color: #44a426">免费</span>
-          </div>
-        </div>
-      </div>
+  
     </div>
     <div class="hezi1">没有更多内容啦！！！</div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
+      show: false,
       is: 0,
       is1: 0,
-
+      acti: 0,
+      list2: [],
       list: ["初一", "初二", "初三", "高一", "高二"],
       list1: ["语文", "数学", "英语", "物理", "化学"],
 
@@ -315,11 +129,23 @@ export default {
       ],
     };
   },
+  created() {
+    let show = localStorage.show;
+    if (show) {
+      this.show = JSON.parse(show);
+    }
+    console.log(this.show);
+
+    axios.get("http://localhost:8080/data1.json").then((res) => {
+      console.log(res.data.data);
+      this.list2 = res.data.data;
+    });
+  },
   methods: {
     btn(index) {
       this.is = index;
     },
-     btn1(index) {
+    btn1(index) {
       this.is1 = index;
     },
     search() {
@@ -327,24 +153,37 @@ export default {
         path: "/search",
       });
     },
-    course() {
+    course(i) {
+      // this.show=false
+      this.acti = i;
+      if (this.acti == i) {
+        this.show = true;
+        localStorage.show = JSON.stringify(this.show);
+      }
+
+      console.log(this.show);
       this.$router.push({
         path: "/Coursedetail",
+      });
+    },
+    // 精品课程
+    Coursedetail(index) {
+      console.log(index);
+      this.$router.push({
+        path: "/Coursedetail",
+        query: {
+          val1: index,
+        },
       });
     },
   },
 };
 </script>
 
-
-
-
-
-
-
-
-
 <style scoped >
+body {
+  font-size: 0.3rem;
+}
 .tmk-item span:hover {
   color: red;
 }
@@ -474,5 +313,127 @@ img {
 }
 .choose {
   padding-left: 4vw;
+}
+.why {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Boutique_bottom_free {
+  width: 100%;
+  height: 0.8rem;
+  /* border: 1px solid red; */
+  margin: 0.7rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+.Boutique_bottom_img1 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 0.6rem;
+}
+.Boutique_bottom_img1 p {
+  margin: 0 0.3rem;
+  color: gray;
+}
+.Boutique {
+  width: 100%;
+  /* background: skyblue; */
+}
+.Boutique_top {
+  width: 95%;
+  height: 0.5rem;
+  /* background: #ffff; */
+  line-height: 0.5rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  border-left: 4px solid #eb6100;
+}
+.Boutique_bottom {
+  width: 95%;
+  margin: 0.3rem auto;
+  overflow: hidden;
+}
+.Boutique_bottom ul {
+  width: 100%;
+}
+.Boutique_bottom ul li {
+  width: 100%;
+  height: 4rem;
+  background: #fff;
+  margin: 0.2rem 0;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  overflow: hidden;
+}
+.Boutique_bottom_top {
+  margin: 0.3rem 0;
+}
+.Boutique_bottom_top p {
+  font-size: 0.3rem;
+}
+
+/* 推荐课程 */
+.Boutique_bottom_frees {
+  width: 100%;
+  height: 0.8rem;
+  /* border: 1px solid red; */
+  margin: 0.7rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+.Boutique_bottom_img1s {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 0.6rem;
+}
+.Boutique_bottom_img1s p {
+  margin: 0 0.3rem;
+  color: gray;
+}
+.Boutiques {
+  width: 100%;
+  /* background: skyblue; */
+}
+.Boutique_tops {
+  width: 95%;
+  height: 0.5rem;
+  /* background: #ffff; */
+  line-height: 0.5rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  border-left: 4px solid #eb6100;
+}
+.Boutique_bottoms {
+  width: 95%;
+  margin: 0.3rem auto;
+  overflow: hidden;
+}
+.Boutique_bottoms ul {
+  width: 100%;
+}
+.Boutique_bottoms ul li {
+  width: 100%;
+  height: 4rem;
+  background: #fff;
+  margin: 0.2rem 0;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  overflow: hidden;
+}
+.Boutique_bottom_tops {
+  margin: 0.3rem 0;
+}
+.Boutique_bottom_tops p {
+  font-size: 0.4rem;
 }
 </style>

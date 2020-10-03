@@ -27,7 +27,7 @@
           </div>
      </div>
 
-
+<van-empty description="没有更多内容！ "  v-show="show"/>
 
 
   </div>
@@ -38,7 +38,8 @@ export default {
     data(){
         return{
             value:"",
-            list:[]
+            list:[],
+            show:false
         }
     },
     created(){
@@ -52,7 +53,7 @@ export default {
             this.list.push(this.value)
             this.value=""
             localStorage.list=JSON.stringify(this.list)
-
+          this.show=true
 
         },
         fanhui(){
