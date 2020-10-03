@@ -1,5 +1,5 @@
  <template>
-  <div>
+  <div class="lessone_wrap">
     <div class="index_daohang">
       <!-- 头部 -->
       <van-nav-bar title="特色课" class="index_toubu">
@@ -180,17 +180,14 @@ export default {
 };
 </script>
 
-
-
-
-
-
-
-
-
 <style scoped >
 body {
   font-size: 0.3rem;
+}
+.lessone_wrap{
+  width: 100%;
+  height: 90vh;
+  overflow: scroll;
 }
 .tmk-item span:hover {
   color: red;

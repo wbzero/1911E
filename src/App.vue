@@ -9,10 +9,10 @@
       <van-tabbar-item to="/user" icon="smile">我的</van-tabbar-item>
     </van-tabbar>
 
-    <div class="drag" ref="drage" v-show="!show" @touchmove="changes" @click="add">
+    <div class="drag" ref="drage" v-show="!isShow" @touchmove="changes" @click="add">
       <van-icon name="coupon" size="30" />
     </div>
-    <Service :show="show" @back="back"/>
+    <Service :show="isShow" @back="back"/>
   </div>
 </template>
 
@@ -27,13 +27,19 @@ import Service from './components/Service'
         show: false
       }
     },
+    computed: {
+      isShow(){
+        return this.$store.state.show
+      }
+    },
     methods: {
       add() {
         this.show = true
-        // this.$router.push('/email')
+        this.$store.dispatch('addShow',this.show)
       },
       back() {
         this.show = false
+        this.$store.dispatch('addBack',this.show)
       },
       changes(e) {
         let cx = e.targetTouches[0].clientX;
