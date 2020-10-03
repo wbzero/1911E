@@ -22,10 +22,12 @@
           />
           <div class="attention_left_div">
             <div class="attention_left_h">
-              <h3>{{ list.name }}</h3>
-              <p style="color: rgba(246, 195, 161)">M20</p>
+              <p style="font-size: 0.3rem">{{ list.name }}</p>
+              <p style="color: rgba(246, 195, 161); margin: 0 0.1rem">M20</p>
             </div>
-            <span style="color: gray">男 30年教龄</span>
+            <span style="color: gray; display: inline-block; margin: 0.1rem 0"
+              >男 30年教龄</span
+            >
           </div>
         </div>
         <div class="attention_right">
@@ -39,7 +41,10 @@
           title-active-color="orange"
           color="orange"
         >
-          <van-tab title="讲师介绍">
+          <van-tab>
+            <template #title>
+              <div style="font-size: 0.3rem">讲师介绍</div>
+            </template>
             <div class="introduce">
               <div class="introduce_content">
                 <p
@@ -88,32 +93,44 @@
               </div>
             </div>
           </van-tab>
-          <van-tab title="主讲课程">
+          <van-tab>
+            <template #title>
+              <div style="font-size: 0.3rem">主讲课程</div>
+            </template>
             <div class="Boutique">
               <div class="Boutique_bottom">
                 <ul>
                   <li
-                    v-for="(item, index) in 7"
+                    v-for="(item, index) in userList"
                     :key="index"
                     @click="Coursedetail"
                   >
                     <div class="Boutique_bottom_top">
-                      <p>每时每课特级教师-自主招生冲刺讲座-1代数式求值1</p>
+                      <p style="font-size: 0.31rem">
+                        {{item.title}}
+                      </p>
 
-                      <span style="color: gray">共一课时</span>
+                      <span
+                        style="
+                          color: gray;
+                          display: inline-block;
+                          margin: 0.1rem 0;
+                        "
+                        >共一课时</span
+                      >
                     </div>
 
                     <div class="Boutique_bottom_img1">
                       <img
-                        src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png"
+                        :src="item.img"
                         alt=""
                         style="
-                          width: 0.8rem;
-                          height: 0.8rem;
+                          width: 0.6rem;
+                          height: 0.6rem;
                           border-radius: 50%;
                         "
                       />
-                      <p>杨德胜</p>
+                      <p>{{item.name}}</p>
                     </div>
                     <div class="Boutique_bottom_free">
                       <span style="color: gray; font-size: 0.3rem"
@@ -126,7 +143,10 @@
               </div>
             </div>
           </van-tab>
-          <van-tab title="学员评价">
+          <van-tab>
+            <template #title>
+              <div style="font-size: 0.3rem">学员评价</div>
+            </template>
             <div class="imgs">
               <img src="../../../assets/pinglun.png" alt="" />
             </div>
@@ -148,6 +168,7 @@ export default {
       list: {},
       userList: [],
       val: this.$route.query.val,
+      userList: [],
     };
   },
 
@@ -160,6 +181,10 @@ export default {
           console.log(item);
         }
       });
+    });
+    this.$axios.get("http://localhost:8080/data1.json").then((res) => {
+      // console.log(res.data.data);
+      this.userList = res.data.data;
     });
   },
   methods: {
@@ -180,7 +205,7 @@ export default {
         }, 2500);
       } else if (this.tex == "已关注") {
         Toast.success("已取消");
-        localStorage.removeItem("userList")
+        localStorage.removeItem("userList");
         setTimeout(() => {
           this.tex = "关注";
         }, 2500);
@@ -217,6 +242,7 @@ export default {
 .introduce_content_intro_left {
   color: gray;
   width: 20%;
+  font-size: 0.3rem;
 }
 .introduce_content_intro_right {
   width: 80%;
@@ -246,7 +272,7 @@ export default {
   height: 2rem;
   background: #fff;
   position: relative;
-  margin: -1.5rem auto;
+  margin: -1.6rem auto;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -268,11 +294,11 @@ export default {
   justify-content: space-between;
 }
 .attention_right button {
-  width: 1.2rem;
-  height: 0.5rem;
+  width: 1.3rem;
+  height: 0.6rem;
   background: #ebeefe;
   border-radius: 0.35rem;
-  color: rgb(247, 182, 139);
+  color: rgb(253, 175, 123);
   border: none;
   outline: none;
 }
