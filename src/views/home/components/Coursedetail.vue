@@ -133,7 +133,7 @@ export default {
     },
     apply() {
       if (this.tex == "立即报名") {
-        localStorage.setItem("apply", "app");
+        localStorage.setItem("index", this.val1);
         Toast.success("成功");
         setTimeout(() => {
           this.tex = "立即学习";

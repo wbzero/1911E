@@ -10,7 +10,7 @@
               @click="back"
             />
           </span>
-          <span style="color: #fff; font-size: 0.4rem">讲师详情</span>
+          <span style="color: #fff; font-size: 0.35rem">讲师详情</span>
           <span></span>
         </div>
       </div>
@@ -23,8 +23,8 @@
             />
             <div class="attention_left_div">
               <div class="attention_left_h">
-                <h3>{{list.title}}</h3>
-                <p style="color: rgba(246, 195, 161)">{{list.mm}}</p>
+                <h3>{{ list.title }}</h3>
+                <p style="color: rgba(246, 195, 161)">{{ list.mm }}</p>
               </div>
               <span style="color: gray">男 30年教龄</span>
             </div>
@@ -48,7 +48,10 @@
           title-active-color="orange"
           color="orange"
         >
-          <van-tab title="讲师介绍">
+          <van-tab>
+             <template #title>
+              <div style="font-size: 0.3rem">讲师介绍</div>
+            </template>
             <div class="introduce">
               <div class="introduce_content">
                 <p
@@ -97,20 +100,23 @@
               </div>
             </div>
           </van-tab>
-          <van-tab title="主讲课程">
+          <van-tab>
+            <template #title>
+              <div style="font-size: 0.3rem">主讲课程</div>
+            </template>
             <div class="Boutique">
               <div class="Boutique_bottom">
                 <ul>
-                  <li v-for="(item, index) in 7" :key="index">
+                  <li v-for="(item, index) in userList" :key="index">
                     <div class="Boutique_bottom_top">
-                      <p>每时每课特级教师-自主招生冲刺讲座-1代数式求值1</p>
+                      <p style="font-size: 0.31rem">{{ item.title }}</p>
 
                       <span style="color: gray">共一课时</span>
                     </div>
 
                     <div class="Boutique_bottom_img1">
                       <img
-                        src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png"
+                        :src="item.img"
                         alt=""
                         style="
                           width: 0.8rem;
@@ -118,7 +124,7 @@
                           border-radius: 50%;
                         "
                       />
-                      <p>杨德胜</p>
+                      <p>{{ item.name }}</p>
                     </div>
                     <div class="Boutique_bottom_free">
                       <span style="color: gray; font-size: 0.3rem"
@@ -131,7 +137,10 @@
               </div>
             </div>
           </van-tab>
-          <van-tab title="学员评价">
+          <van-tab>
+            <template #title>
+              <div style="font-size: 0.3rem">学员评价</div>
+            </template>
             <div class="evaluate">
               <div class="evaluate_top">
                 <span>深入浅出(4)</span>
@@ -196,10 +205,15 @@ export default {
         }
       });
     });
+    this.$axios.get("http://localhost:8080/data1.json").then((res) => {
+      // console.log(res.data.data);
+      this.userList = res.data.data;
+    });
   },
   data() {
     return {
       list: {},
+      userList: [],
       active: 0,
       tex: "关注",
       value: 4,
@@ -346,7 +360,7 @@ export default {
   position: relative;
   /* background: #fff; */
 
-  margin: -1.5rem auto;
+  margin: -1.6rem auto;
 }
 .attentions {
   width: 100%;
@@ -433,7 +447,7 @@ export default {
   width: 100%;
   height: 0.8rem;
   /* border: 1px solid red; */
-  margin: 0.4rem 0;
+  margin: 0.6rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

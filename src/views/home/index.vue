@@ -81,14 +81,15 @@
               style="width: 0.8rem; height: 0.8rem; border-radius: 50%"
             />
             <div class="battle_array_bottom_right">
-              <h3>{{ item.name }}</h3>
+              <p style="font-size: 0.3rem">{{ item.name }}</p>
               <p
                 style="
                   color: gray;
-                  width: 250px;
+                  width: 230px;
                   overflow: hidden;
                   white-space: nowrap;
                   text-overflow: ellipsis;
+                  margin: 0.1rem 0.1rem;
                 "
               >
                 {{ item.title }}
@@ -108,13 +109,15 @@
             :key="index"
             @click="Coursedetail(item.id)"
           >
-            <div class="fixed_img" v-show="show">
+            <div class="fixed_img" v-show="show == index">
               <img src="../../../public/img/bm.png" alt="" />
             </div>
             <div class="Boutique_bottom_top">
-              <p style="font-size: 0.3rem">{{ item.title }}</p>
+              <p style="font-size: 0.31rem">{{ item.title }}</p>
 
-              <span style="color: gray">共一课时</span>
+              <span style="color: gray; display: inline-block; margin: 0.1rem 0"
+                >共一课时</span
+              >
             </div>
 
             <div class="Boutique_bottom_img1">
@@ -147,9 +150,11 @@
               <img src="../../../public/img/bm.png" alt="" />
             </div>
             <div class="Boutique_bottom_tops">
-              <p style="font-size: 0.3rem">{{ item.title }}</p>
+              <p style="font-size: 0.31rem">{{ item.title }}</p>
 
-              <span style="color: gray">共一课时</span>
+              <span style="color: gray; display: inline-block; margin: 0.1rem 0"
+                >共一课时</span
+              >
             </div>
 
             <div class="Boutique_bottom_img1s">
@@ -181,7 +186,7 @@
             <img :src="item.img" alt="" style="width: 0.7rem; height: 0.7rem" />
             <div class="battle_array_bottom_right">
               <div class="battle_array_bottom_right_div">
-                <h3>{{ item.title }}</h3>
+                <p style="font-size: 0.3rem">{{ item.title }}</p>
                 <span style="color: #ed8c4c; margin: 0 0.2rem">{{
                   item.mm
                 }}</span>
@@ -214,14 +219,15 @@ export default {
       list: [],
       list1: [],
       list2: [],
-      show: false,
+      show: 1,
     };
   },
-  created(){
-    var app=localStorage.getItem("apply")
-    if(app=="app"){
-      this.show=true
+  created() {
+    var index = localStorage.getItem("index");
+    if(index){
+      this.show=index
     }
+    
   },
   mounted() {
     this.$axios.get("http://localhost:8080/data.json").then((res) => {
@@ -257,6 +263,7 @@ export default {
     },
     // 精品课程
     Coursedetail(index) {
+     
       console.log(index);
       this.$router.push({
         path: "/Coursedetail",
@@ -280,16 +287,18 @@ export default {
 <style scoped >
 /* 明星讲师 */
 .dramatic_decline {
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
 }
 .dramatic_decline_top {
-  width: 95%;
+  width: 100%;
   height: 0.5rem;
   /* background: #ffff; */
   line-height: 0.5rem;
   margin: 0 auto;
   box-sizing: border-box;
   padding: 0 0.25rem;
+  font-size: 0.3rem;
   border-left: 4px solid #eb6100;
 }
 .dramatic_decline_bottom ul {
@@ -369,6 +378,7 @@ export default {
   margin: 0 auto;
   box-sizing: border-box;
   padding: 0 0.25rem;
+  font-size: 0.3rem;
   border-left: 4px solid #eb6100;
 }
 .battle_array_bottom {
@@ -427,6 +437,7 @@ export default {
   margin: 0 auto;
   box-sizing: border-box;
   padding: 0 0.25rem;
+  font-size: 0.3rem;
   border-left: 4px solid #eb6100;
 }
 .Boutique_bottom {
@@ -450,7 +461,7 @@ export default {
 .fixed_img {
   position: absolute;
   right: 0rem;
-  top: 0.8rem;
+  top: 1rem;
 }
 .fixed_img > img {
   width: 1.5rem;
@@ -496,6 +507,7 @@ export default {
   margin: 0 auto;
   box-sizing: border-box;
   padding: 0 0.25rem;
+  font-size: 0.3rem;
   border-left: 4px solid #eb6100;
 }
 .Boutique_bottoms {
