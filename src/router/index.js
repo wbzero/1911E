@@ -351,8 +351,16 @@ const routes = [{
     path: '/search',
     name: 'Search',
     component: () => import('../views/lessone/Search.vue'),
-    meta: {
-      show: true
+    meta:{
+      show:true
+    }
+  },
+  {
+    path: '/info',
+    name: "Info",
+    component: () => import('../views/user/Info.vue'),
+    meta:{
+      show:false
     }
   }
 
