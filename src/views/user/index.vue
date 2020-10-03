@@ -5,7 +5,7 @@
 			<div class="top_title">
 				<van-row class="top_title_user" align="center">
 					<van-col span="8">
-						<van-image style="margin-left: 1rem;" round width="1rem" height="1rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+						<van-image @click="gotos('/info')" style="margin-left: 1rem;" round width="1rem" height="1rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
 					</van-col>
 					<van-col span="8">131*******9554</van-col>
 					<van-col span="8"></van-col>
