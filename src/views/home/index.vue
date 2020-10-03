@@ -70,14 +70,18 @@
       <div class="battle_array_top">名师阵容</div>
       <div class="battle_array_bottom">
         <ul>
-          <li v-for="(item, index) in 3" :key="index" @click="tearch">
+          <li
+            v-for="(item, index) in list"
+            :key="index"
+            @click="tearch(item.id)"
+          >
             <img
-              src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png"
+              :src="item.img"
               alt=""
               style="width: 0.8rem; height: 0.8rem; border-radius: 50%"
             />
             <div class="battle_array_bottom_right">
-              <h3>杨德胜</h3>
+              <h3>{{ item.name }}</h3>
               <p
                 style="
                   color: gray;
@@ -87,8 +91,7 @@
                   text-overflow: ellipsis;
                 "
               >
-                　杨老师,特级教师.多次被中国数学会评为全国高中数学竞联赛优秀教练员。长期从事名校理科班的数学教学和数学竞赛辅导工作。辅导学生参加全国高中数学联赛有数百人次获全国高中数学联赛一、二、三等奖，数十人被免试保送到清华大学、北京大学等名牌大学学习。十多人获CMO获一、二、三等奖，一人获IMO金牌。
-                　　特别是近年来大学试行自主招生，有很多同学通过上他的竞赛辅导课进入清华大学、北京大学、上海交通大学等。
+                {{ item.title }}
               </p>
             </div>
           </li>
@@ -100,20 +103,27 @@
       <div class="Boutique_top">精品课程</div>
       <div class="Boutique_bottom">
         <ul>
-          <li v-for="(item, index) in 7" :key="index" @click="Coursedetail">
+          <li
+            v-for="(item, index) in list1"
+            :key="index"
+            @click="Coursedetail(item.id)"
+          >
+            <div class="fixed_img" v-show="show">
+              <img src="../../../public/img/bm.png" alt="" />
+            </div>
             <div class="Boutique_bottom_top">
-              <p>每时每课特级教师-自主招生冲刺讲座-1代数式求值1</p>
+              <p style="font-size: 0.3rem">{{ item.title }}</p>
 
               <span style="color: gray">共一课时</span>
             </div>
 
             <div class="Boutique_bottom_img1">
               <img
-                src="../../assets/logo.png"
+                :src="item.img"
                 alt=""
-                style="width: 0.5rem; height: 0.5rem"
+                style="width: 0.5rem; height: 0.5rem; border-radius: 50%"
               />
-              <p>杨德胜</p>
+              <p>{{ item.name }}</p>
             </div>
             <div class="Boutique_bottom_free">
               <span style="color: gray; font-size: 0.3rem">100人已报名</span>
@@ -128,20 +138,27 @@
       <div class="Boutique_tops">推荐课程</div>
       <div class="Boutique_bottoms">
         <ul>
-          <li v-for="(item, index) in 7" :key="index" @click="Coursedetail">
+          <li
+            v-for="(item, index) in list1"
+            :key="index"
+            @click="Coursedetail(item.id)"
+          >
+            <div class="fixed_img" v-show="show">
+              <img src="../../../public/img/bm.png" alt="" />
+            </div>
             <div class="Boutique_bottom_tops">
-              <p>每时每课特级教师-自主招生冲刺讲座-1代数式求值1</p>
+              <p style="font-size: 0.3rem">{{ item.title }}</p>
 
               <span style="color: gray">共一课时</span>
             </div>
 
             <div class="Boutique_bottom_img1s">
               <img
-                src="../../assets/logo.png"
+                :src="item.img"
                 alt=""
-                style="width: 0.5rem; height: 0.5rem"
+                style="width: 0.5rem; height: 0.5rem; border-radius: 50%"
               />
-              <p>杨德胜</p>
+              <p>{{ item.name }}</p>
             </div>
             <div class="Boutique_bottom_frees">
               <span style="color: gray; font-size: 0.3rem">100人已报名</span>
@@ -156,16 +173,18 @@
       <div class="dramatic_decline_top">明星讲师</div>
       <div class="dramatic_decline_bottom">
         <ul>
-          <li v-for="(item, index) in 7" :key="index" @click="Lecturer">
-            <img
-              src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-              alt=""
-              style="width: 0.7rem; height: 0.7rem"
-            />
+          <li
+            v-for="(item, index) in list2"
+            :key="index"
+            @click="Lecturer(item.id)"
+          >
+            <img :src="item.img" alt="" style="width: 0.7rem; height: 0.7rem" />
             <div class="battle_array_bottom_right">
               <div class="battle_array_bottom_right_div">
-                <h3>杨德胜</h3>
-                <span style="color: #ed8c4c; margin: 0 0.2rem">m10</span>
+                <h3>{{ item.title }}</h3>
+                <span style="color: #ed8c4c; margin: 0 0.2rem">{{
+                  item.mm
+                }}</span>
               </div>
 
               <p
@@ -178,8 +197,7 @@
                   text-overflow: ellipsis;
                 "
               >
-                中学一级教师，16年教学经验。学校骨干教师，有丰富的教学经验及毕业班经验。擅长阅读写作教学，针对中考题型有独到的答题技巧和系统的作文教学。
-                6年网课教学经验，课中能很好的跟学生沟通互动，把握学生上课情况。
+                {{ item.shuju }}
               </p>
             </div>
           </li>
@@ -191,6 +209,33 @@
 
 <script>
 export default {
+  data() {
+    return {
+      list: [],
+      list1: [],
+      list2: [],
+      show: false,
+    };
+  },
+  created(){
+    var app=localStorage.getItem("apply")
+    if(app=="app"){
+      this.show=true
+    }
+  },
+  mounted() {
+    this.$axios.get("http://localhost:8080/data.json").then((res) => {
+      // console.log(res.data.data);
+      this.list = res.data.data;
+    });
+    this.$axios.get("http://localhost:8080/data1.json").then((res) => {
+      // console.log(res.data.data);
+      this.list1 = res.data.data;
+    });
+    this.$axios.get("http://localhost:8080/list.json").then((res) => {
+      this.list2 = res.data.list;
+    });
+  },
   methods: {
     cousers() {
       this.$router.push("/lessone");
@@ -202,16 +247,32 @@ export default {
       this.$router.push("/coach");
     },
     // 讲师详情
-    tearch(){
-        this.$router.push("/tearch")
+    tearch(index) {
+      this.$router.push({
+        path: "/tearch",
+        query: {
+          val: index,
+        },
+      });
     },
     // 精品课程
-    Coursedetail(){
-        this.$router.push("/Coursedetail")
+    Coursedetail(index) {
+      console.log(index);
+      this.$router.push({
+        path: "/Coursedetail",
+        query: {
+          val1: index,
+        },
+      });
     },
-    Lecturer(){
-        this.$router.push("/Lecturer")
-    }
+    Lecturer(index) {
+      this.$router.push({
+        path: "/Lecturer",
+        query: {
+          val: index,
+        },
+      });
+    },
   },
 };
 </script>
@@ -338,7 +399,7 @@ export default {
   width: 100%;
   height: 0.8rem;
   /* border: 1px solid red; */
-  margin: 0.4rem 0;
+  margin: 0.7rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -384,12 +445,22 @@ export default {
   box-sizing: border-box;
   padding: 0 0.25rem;
   overflow: hidden;
+  position: relative;
+}
+.fixed_img {
+  position: absolute;
+  right: 0rem;
+  top: 0.8rem;
+}
+.fixed_img > img {
+  width: 1.5rem;
+  height: 1.2rem;
 }
 .Boutique_bottom_top {
   margin: 0.3rem 0;
 }
 .Boutique_bottom_top p {
-  font-size: 0.4rem;
+  font-size: 0.3rem;
 }
 
 /* 推荐课程 */
@@ -397,7 +468,7 @@ export default {
   width: 100%;
   height: 0.8rem;
   /* border: 1px solid red; */
-  margin: 0.4rem 0;
+  margin: 0.7rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -443,6 +514,7 @@ export default {
   box-sizing: border-box;
   padding: 0 0.25rem;
   overflow: hidden;
+  position: relative;
 }
 .Boutique_bottom_tops {
   margin: 0.3rem 0;
