@@ -34,7 +34,7 @@
       <!-- 星期表 -->
       <div class="xingqi_biao">
         <ul style="list-style: none;width:100%;height:10vh">
-          <li class="biao_li" v-for="i in 6" :key="i">
+          <li class="biao_li" v-for="(item,index) in 6" :key="index" :class="{'active':isactive == index}" @click="dian(index)">
               <span>周一</span>
               <span>09/28</span>
           </li>
@@ -52,6 +52,11 @@
 
 <script>
 export default {
+  data(){
+    return{
+      isactive:0
+    }
+  },
   methods: {
     left() {
       window.history.back();
@@ -60,13 +65,21 @@ export default {
         this.$router.push('/Lecturer')
     },
     clickYu(){
-        this.$toast('请选择时间');
+        this.$toast('请选择预约时间');
+    },
+    dian(index){
+      this.isactive = index
     }
   },
 };
 </script>
 
 <style scoped>
+.active{
+  border-bottom: 0.05rem solid blue;
+  border-radius: 0.05rem;
+  color: orange;
+}
 .yuyue_ke {
   width: 100%;
   height: 16vh;
@@ -148,8 +161,8 @@ export default {
 }
 .biao_li{
     float: left;
-    width: 1.5rem;
-    height: 1rem;
+    width: 0.6rem;
+    height: 1.1rem;
     font-size: 0.3rem;
     /* border: 1px solid red; */
     display: flex;
@@ -161,7 +174,7 @@ export default {
     width: 45%;
     height: 25vh;
     margin-top: 0.7rem;
-    margin-left: 2rem;
+    margin-left: 2.5rem;
 }
 .bottom {
   position: fixed;
