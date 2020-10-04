@@ -2,8 +2,10 @@
   <div class="setting_wrap">
       <my-title title="设置" />
       <div class="setting_main">
-        <van-cell title="单元格" is-link @click="goto" />
-
+        <van-cell title="设置密码" is-link @click="goto" />
+        <div class="main_btn">
+          退出登录
+        </div>
       </div>
   </div>
 </template>
@@ -33,8 +35,21 @@ export default {
 }
 .setting_main{
   width: 100%;
-  height: 3rem;
+  height: 4rem;
   margin-top: .2rem;
-  background-color: #EFF1F4;
+  background-color: #fff;
+}
+.main_btn{
+  width: 90%;
+  height: .9rem;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  background-color: #EA6007;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: .1rem;
+  font-size: .35rem;
 }
 </style>
