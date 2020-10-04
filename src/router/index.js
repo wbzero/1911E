@@ -63,13 +63,14 @@ const routes = [
     }
   },
   {
-    path: '/courses',
-    name: 'courses',
-    component: () => import('../views/lessone/courses.vue'),
+    path: '/order',
+    name: 'order',
+    component: () => import('../views/lessone/order.vue'),
     meta:{
       show:false
     }
-  }
+  },
+
  
 ]
 

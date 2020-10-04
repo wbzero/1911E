@@ -2,7 +2,10 @@
   <div>
     <div class="index_daohang">
       <!-- 头部 -->
-      <van-nav-bar title="特色课" class="index_toubu">
+      <van-nav-bar  class="index_toubu">
+        <template #title>
+         <span style="font-size: 4.8vw;color:#595959;">特色课</span>
+        </template>
         <template #right>
           <van-icon name="search" size="23" color="gray" @click="search" />
         </template>
@@ -68,40 +71,124 @@
 
     <div class="hezi"></div>
 
-    <div class="neirong" @click="course">
+    <div class="neirong">
       <!-- 内容 -->
-      <div class="index_nrirong"  v-for="(item, index) in list2"
-              :key="index"
-              @click="Coursedetail(item.id)">
+      <div
+        class="index_nrirong"
+        v-for="(item, index) in list2"
+        :key="index"
+        @click="Coursedetail(item.id)"
+      >
         <div class="index_nrirong_one">
           <div class="index_neirong_two">
-            <div style="font-size: 0.35rem">
-             {{item.title}}
+            <div style="font-size: 0.3rem">
+              {{ item.title }}
             </div>
             <div>
-              <span class="iconfont icon-zhongbiao" style="font-size: 0.27rem"
-                >03月16日 18:30~03月22日 15:00 | 共8课时</span
+              <span
+                class="iconfont icon-zhongbiao"
+                style="font-size: 0.25rem; color: gray"
+                >共8课时</span
               >
             </div>
             <br />
             <div class="why">
-              <span> <img :src="item.img" alt=""/>
-              <span>{{item.name}}</span>
+              <span style="display: flex">
+                <span>
+                  <img
+                    :src="item.img"
+                    alt=""
+                    style="width: 0.5rem; height: 0.5rem"
+                /></span>
+                <span
+                  style="margin-left: 0.1rem; font-size: 0.25rem; color: gray"
+                  >{{ item.name }}</span
+                >
               </span>
-              <span><img src="http://localhost:8080/img/11.png" alt="" v-show="show" style="width:1rem;height:1rem"></span>
+              <span
+                ><img
+                  src="http://localhost:8080/img/11.png"
+                  alt=""
+                  v-show="show"
+                  style="width: 1.3rem; height: 1.3rem"
+              /></span>
             </div>
           </div>
 
           <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray">118人已报名</span>
-            <span style="font-size: 0.3rem; color: #44a426">免费</span>
+            <span style="font-size: 0.24rem; color: gray"
+              >{{ item.baoming }}人已报名</span
+            >
+            <span style="font-size: 0.3rem; color: #44a426">{{
+              item.jiage
+            }}</span>
           </div>
         </div>
       </div>
 
-  
+      <div class="neirong">
+        <!-- 内容 -->
+        <div
+          class="index_nrirong"
+          v-for="(item, index) in list3"
+          :key="index"
+          @click="tiao(item.id)"
+        >
+          <div class="index_nrirong_one">
+            <div class="index_neirong_two">
+              <div style="font-size: 0.3rem">
+                {{ item.title }}
+              </div>
+              <div>
+                <span
+                  class="iconfont icon-zhongbiao"
+                  style="font-size: 0.25rem; color: gray"
+                  >共8课时</span
+                >
+              </div>
+              <!-- <br /> -->
+              <div class="why">
+                <span style="display: flex">
+                  <span>
+                    <img
+                      :src="item.img"
+                      alt=""
+                      style="width: 0.5rem; height: 0.5rem"
+                  /></span>
+                  <span
+                    style="margin-left: 0.1rem; font-size: 0.25rem; color: gray"
+                    >{{ item.name }}</span
+                  >
+                </span>
+                <span
+                  ><img
+                    src="http://localhost:8080/img/11.png"
+                    alt=""
+                    v-show="show"
+                    style="width: 1.3rem; height: 1.3rem"
+                /></span>
+              </div>
+            </div>
+
+            <div class="index_neirong_yi">
+              <span style="font-size: 0.24rem; color: gray"
+                >{{ item.baoming }}人已报名</span
+              >
+              <span style="font-size: 0.3rem; color: red">
+                <img
+                  src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/20191HHDExgz0u1567065946.png"
+                  style="width: 0.24rem; height: 0.24rem"
+                  alt=""
+                />
+                {{ item.jiage }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hezi1">没有更多内容啦！！！</div>
     </div>
-    <div class="hezi1">没有更多内容啦！！！</div>
   </div>
 </template>
 
@@ -115,6 +202,7 @@ export default {
       is1: 0,
       acti: 0,
       list2: [],
+      list3: [],
       list: ["初一", "初二", "初三", "高一", "高二"],
       list1: ["语文", "数学", "英语", "物理", "化学"],
 
@@ -129,16 +217,18 @@ export default {
       ],
     };
   },
-  created() {
-    let show = localStorage.show;
-    if (show) {
-      this.show = JSON.parse(show);
-    }
+  mounted() {
+    // let list2 = localStorage.list2;
+    // if (list2) {
+    //   this.list2 = JSON.parse(list2);
+    // }
     console.log(this.show);
 
-    axios.get("http://localhost:8080/data1.json").then((res) => {
+    axios.get("/data2.json").then((res) => {
       console.log(res.data.data);
       this.list2 = res.data.data;
+      this.list3 = res.data.data3;
+      // localStorage.list2 =JSON.stringify(this.list2)
     });
   },
   methods: {
@@ -153,19 +243,7 @@ export default {
         path: "/search",
       });
     },
-    course(i) {
-      // this.show=false
-      this.acti = i;
-      if (this.acti == i) {
-        this.show = true;
-        localStorage.show = JSON.stringify(this.show);
-      }
 
-      console.log(this.show);
-      this.$router.push({
-        path: "/Coursedetail",
-      });
-    },
     // 精品课程
     Coursedetail(index) {
       console.log(index);
@@ -176,17 +254,18 @@ export default {
         },
       });
     },
+
+    tiao(item) {
+      this.$router.push({
+        path: "/login",
+        query: {
+          item,
+        },
+      });
+    },
   },
 };
 </script>
-
-
-
-
-
-
-
-
 
 <style scoped >
 body {
@@ -212,18 +291,20 @@ body {
 
 .index_nrirong {
   width: 100%;
+
   background: #f0f2f5;
   box-sizing: border-box;
   padding: 0.3rem 0.3rem;
   overflow: scroll;
 }
 .index_nrirong_one {
-  width: 90%;
-  height: 170px;
+  width: 100%;
+  height: 3.79rem;
   background: #fff;
   margin: 0 auto;
   box-sizing: border-box;
   padding: 0.23rem 0.24rem;
+  border-radius: 0.1rem;
 }
 .index_fenlei {
   font-size: 0.3rem;
@@ -324,124 +405,10 @@ img {
 }
 .why {
   width: 100%;
+  height: 1.3rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
   justify-content: space-between;
-}
-
-.Boutique_bottom_free {
-  width: 100%;
-  height: 0.8rem;
-  /* border: 1px solid red; */
-  margin: 0.7rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #eee;
-}
-.Boutique_bottom_img1 {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 0.6rem;
-}
-.Boutique_bottom_img1 p {
-  margin: 0 0.3rem;
-  color: gray;
-}
-.Boutique {
-  width: 100%;
-  /* background: skyblue; */
-}
-.Boutique_top {
-  width: 95%;
-  height: 0.5rem;
-  /* background: #ffff; */
-  line-height: 0.5rem;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0 0.25rem;
-  border-left: 4px solid #eb6100;
-}
-.Boutique_bottom {
-  width: 95%;
-  margin: 0.3rem auto;
-  overflow: hidden;
-}
-.Boutique_bottom ul {
-  width: 100%;
-}
-.Boutique_bottom ul li {
-  width: 100%;
-  height: 4rem;
-  background: #fff;
-  margin: 0.2rem 0;
-  box-sizing: border-box;
-  padding: 0 0.25rem;
-  overflow: hidden;
-}
-.Boutique_bottom_top {
-  margin: 0.3rem 0;
-}
-.Boutique_bottom_top p {
-  font-size: 0.3rem;
-}
-
-/* 推荐课程 */
-.Boutique_bottom_frees {
-  width: 100%;
-  height: 0.8rem;
-  /* border: 1px solid red; */
-  margin: 0.7rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #eee;
-}
-.Boutique_bottom_img1s {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 0.6rem;
-}
-.Boutique_bottom_img1s p {
-  margin: 0 0.3rem;
-  color: gray;
-}
-.Boutiques {
-  width: 100%;
-  /* background: skyblue; */
-}
-.Boutique_tops {
-  width: 95%;
-  height: 0.5rem;
-  /* background: #ffff; */
-  line-height: 0.5rem;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0 0.25rem;
-  border-left: 4px solid #eb6100;
-}
-.Boutique_bottoms {
-  width: 95%;
-  margin: 0.3rem auto;
-  overflow: hidden;
-}
-.Boutique_bottoms ul {
-  width: 100%;
-}
-.Boutique_bottoms ul li {
-  width: 100%;
-  height: 4rem;
-  background: #fff;
-  margin: 0.2rem 0;
-  box-sizing: border-box;
-  padding: 0 0.25rem;
-  overflow: hidden;
-}
-.Boutique_bottom_tops {
-  margin: 0.3rem 0;
-}
-.Boutique_bottom_tops p {
-  font-size: 0.4rem;
 }
 </style>
