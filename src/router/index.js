@@ -173,14 +173,6 @@ const routes = [{
     }
   },
   {
-    path: '/practice', // 练习页面
-    name: 'Practice',
-    component: () => import('../views/practice/index.vue'),
-    meta: {
-      show: true
-    }
-  },
-  {
     path: '/user', // 我的页面
     name: 'User',
     component: () => import('../views/user/index.vue'),
