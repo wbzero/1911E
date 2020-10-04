@@ -3,7 +3,7 @@
       <my-title title="设置" />
       <div class="setting_main">
         <van-cell title="设置密码" is-link @click="goto" />
-        <div class="main_btn">
+        <div class="main_btn" @click="backlogin">
           退出登录
         </div>
       </div>
@@ -17,11 +17,11 @@ export default {
     'my-title':Title
   },
   methods: {
-    back(){
-      this.$router.go(-1)
-    },
     goto(){
       this.$router.push('/service')
+    },
+    backlogin(){
+      this.$router.push('/login')
     }
   },
 }

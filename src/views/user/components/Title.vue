@@ -33,6 +33,7 @@ export default {
     background-color: #fff;
 }
 .title-box div{
-   font-size: 0.3rem;
+   font-size: 0.35rem;
+   color: #666;
 }
 </style>
