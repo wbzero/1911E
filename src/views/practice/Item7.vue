@@ -5,7 +5,6 @@
       left-arrow
       size="24"
       @click-left="onClickLeft"
-      @click-right="onClickRight"
     >
     </van-nav-bar>
     <van-search v-model="value" placeholder="请输入题库名称关键词" />
@@ -61,6 +60,7 @@ export default {
   data() {
     return {
       list: [],
+      value:''
     };
   },
   // mounted() {
@@ -87,7 +87,7 @@ export default {
     },
     onClickLeft(){
       this.$router.push({
-        path:'/item'
+        path:'/practice'
       })
     }
   },

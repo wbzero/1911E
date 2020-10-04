@@ -5,7 +5,7 @@
     </div>
     <div class="box_center">
       <van-grid>
-  <van-grid-item icon="like-o" text="考点专练" @click="goto('/item')"/>
+  <van-grid-item icon="like-o" text="考点专练" @click="goto('/item7')"/>
   <van-grid-item icon="star-o" text="套卷练习" @click="goto('/item2')"/>
   <van-grid-item icon="fire-o" text="仿真模考" @click="goto('/item3')"/>
   <van-grid-item icon="gem-o" text="错题练习" @click="goto('/item4')"/>
