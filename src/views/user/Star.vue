@@ -1,15 +1,15 @@
 <template>
   <div class="box">
-      <my-title
-      :title="title"
-      />
+      <my-title :title="title" />
       <div>
         <van-empty
             class="custom-image"
             image="https://img.yzcdn.cn/vant/custom-empty-image.png"
             description="暂无关注"
           />
+        
       </div>
+     
   </div>
 </template>
 

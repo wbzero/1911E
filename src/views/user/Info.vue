@@ -4,6 +4,19 @@
       :title="title"
       />
       <div>
+         
+          <van-cell  is-link border>
+            <template #default>
+              <span>头像</span>
+               <van-image
+                style="margin-left: 80%"
+                round
+                width="0.51rem"
+                height="0.51rem"
+                src="https://img.yzcdn.cn/vant/cat.jpeg"
+              />
+            </template>
+          </van-cell>
           <van-cell v-for="(item,index) in list" :key="index" :title="item.title" is-link :value="item.shuju" />
       </div>
   </div>
@@ -17,10 +30,6 @@ export default {
       title:"个人信息",
       details:true,
       list:[
-          {
-            title :"头像",
-            shuju:"" 
-          },
           {
             title :"昵称",
             shuju:"131****9554" 

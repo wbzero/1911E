@@ -2,7 +2,7 @@
   <div class="title-box">
       <div><van-icon name="arrow-left" @click="back"/></div>
       <div>{{title}}</div>
-      <div><span v-if="!details">{{details}}</span> </div>
+      <div><span v-show="details">余额明细</span> </div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 export default {
     props:{
         title:String,
-        details:String
+        details:Boolean,
     },
     methods:{
         back(){
