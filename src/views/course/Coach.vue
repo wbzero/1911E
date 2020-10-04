@@ -34,7 +34,7 @@
               <van-col span="4">星七</van-col>
             </van-row>
             <!-- 天 -->
-            <van-row type="flex" justify="space-around" style="margin-left:0.5rem;margin-top:0.5rem;">
+            <van-row type="flex" justify="space-around" style="margin-left:0.35rem;margin-top:0.5rem;">
               <van-col span="4"><span style="font-size:0.4rem" class="xing">28</span></van-col>
               <van-col span="4"><span style="font-size:0.4rem" class="xing">29</span></van-col>
               <van-col span="4"><span style="font-size:0.4rem" class="xing">30</span></van-col>
@@ -43,14 +43,14 @@
               <van-col span="4"><span style="font-size:0.4rem" class="xing">3 </span></van-col>
               <van-col span="4"><span style="font-size:0.4rem" class="xing">4 </span></van-col>
             </van-row>
-            <van-row type="flex" justify="space-around" style="margin-left:0.5rem;margin-top:0.5rem">
-              <van-col span="4"><span style="font-size:0.4rem">5</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">6</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">7</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">8</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">9</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">10</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">11</span></van-col>
+            <van-row type="flex" justify="space-around" style="margin-left:0.35rem;margin-top:0.5rem">
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">5</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">6</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">7</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">8</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">9</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">10</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">11</span></van-col>
             </van-row>
           </div>
           <!-- 时段 -->
@@ -299,146 +299,125 @@
 </script>
 
 <style scoped>
-  .van-dropdown-menu {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0.9rem;
-  }
-
-  .fudao_body {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    background: #fff;
-    z-index: 111;
-  }
-
-  .left {
-    color: #727272;
-    font-size: 0.5rem;
-  }
-
-  .right {
-    color: #727272;
-    font-size: 0.5rem;
-  }
-
-  .select {
-    margin-top: 1rem;
-    width: 100%;
-    height: 7vh;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0.3rem 0.6rem;
-    color: #969696;
-    font-size: 0.3rem;
-  }
-
-  .teachers {
-    width: 100%;
-    background: #f0f2f5;
-  }
-
-  .teacher_s {
-    width: 95%;
-    height: 13vh;
-    background: #fff;
-    border-radius: 0.15rem;
-    margin: 0.2rem;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0.5rem 0.3rem;
-    z-index: 111;
-  }
-
-  .yu_yue {
-    width: 1.2rem;
-    height: 0.6rem;
-    line-height: 0.6rem;
-    text-align: center;
-    color: #eb6e17;
-    background: #ebeefe;
-    border-radius: 0.3rem;
-    font-size: 0.25rem;
-    z-index: 1;
-  }
-
-  .tearch_img {
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .img_img {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background: #e4e3e3;
-    margin-top: -0.1rem;
-  }
-
-  .img_content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .van-popup {
-    width: 100%;
-    height: 100%;
-    z-index: 111;
-    background: #f0f2f5;
-  }
-
-  .options_riqi {
-    width: 95%;
-    height: 24vh;
-    margin-left: 0.2rem;
-    padding-top: 0.2rem;
-    background: #fff;
-    border-radius: 0.1rem;
-  }
-
-  .riqi_xing {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0.25rem 0.6rem;
-    font-size: 0.3rem;
-    color: rgb(94, 92, 92);
-  }
-
-  /* .van-row{
-  width: 90%;
-  height: 3vh;
-  border:1px;
-} */
-  .xing {
-    display: block;
-    width: 0.65rem;
-    height: 0.65rem;
-    line-height: 0.65rem;
-    text-align: center;
-  }
-
-  .xing:hover {
-    display: block;
-    width: 0.65rem;
-    height: 0.65rem;
-    line-height: 0.65rem;
-    text-align: center;
-    border-radius: 50%;
-    color: #fff;
-    clear: both;
-    background: orange;
-  }
-
-  .riqi_tian {
-    /* list-style: none;
+.van-dropdown-menu {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0.9rem;
+}
+.fudao_body {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  z-index: 111;
+}
+.left {
+  color: #727272;
+  font-size: 0.5rem;
+}
+.right {
+  color: #727272;
+  font-size: 0.5rem;
+}
+.select {
+  margin-top: 1rem;
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.3rem 0.6rem;
+  color: #969696;
+  font-size: 0.3rem;
+}
+.teachers {
+  width: 100%;
+  background: #f0f2f5;
+}
+.teacher_s {
+  width: 95%;
+  height: 13vh;
+  background: #fff;
+  border-radius: 0.15rem;
+  margin: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.5rem 0.3rem;
+  z-index: 111;
+}
+.yu_yue {
+  width: 1.2rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  text-align: center;
+  color: #eb6e17;
+  background: #ebeefe;
+  border-radius: 0.3rem;
+  font-size: 0.25rem;
+  z-index: 1;
+}
+.tearch_img {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+.img_img {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #e4e3e3;
+  margin-top: -0.1rem;
+}
+.img_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.van-popup {
+  width: 100%;
+  height: 100%;
+  z-index: 111;
+  background: #f0f2f5;
+}
+.options_riqi {
+  width: 95%;
+  height: 24vh;
+  margin-left: 0.2rem;
+  padding-top: 0.2rem;
+  background: #fff;
+  border-radius: 0.1rem;
+}
+.riqi_xing {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.3rem;
+  color: rgb(94, 92, 92);
+}
+.xing{
+  display: block;
+  width: 0.65rem;
+  height: 0.65rem;
+  line-height: 0.65rem;
+  text-align: center;
+}
+.xing:hover{
+  display: block;
+  width: 0.65rem;
+  height: 0.65rem;
+  line-height: 0.65rem;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  clear:both;
+  background: orange;
+}
+.riqi_tian {
+  /* list-style: none;
   display: flex;
   justify-content: space-around; */
     width: 94%;

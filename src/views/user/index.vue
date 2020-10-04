@@ -15,7 +15,7 @@
                 src="https://img.yzcdn.cn/vant/cat.jpeg"
               />
             </van-col>
-            <van-col span="10" @click="gotos('/info')">131****9554</van-col>
+            <van-col span="10" @click="gotos('/info')">131*******9554</van-col>
             <van-col span="8">
               <div class="qu" @click="gotos('/coach')">去约课</div>
             </van-col>
@@ -117,7 +117,7 @@
             </van-grid>
           </div>
         </div>
-        <div class="courses bottom">
+        <div class="courses">
           <div class="course_title">自助服务</div>
           <div class="primary">
             <van-grid>
@@ -131,7 +131,7 @@
                      <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-yijianfankui"></span>
                    </template>
                </van-grid-item>
-                <van-grid-item @click="gotos('/service')" text="在线服务">
+                <van-grid-item @click="service" text="在线服务">
                 <template #icon>
                   <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-kefu"></span>
                 </template>
@@ -151,76 +151,73 @@
   </div>
 </template>
 <script>
-import gird from "./components/Gird.vue";
-import odds from "./components/Odds";
-import Service from '../../components/Service'
-export default {
-  data() {
-    return {
-      show: false,
-      gird: [
-        {
-          num: 0,
-          title: "我的特色课",
-          dispa: "已购特色课程的学习",
-        },
-        {
-          num: 0,
-          title: "一对一辅导",
-          dispa: "我的一对一老师辅导",
-        },
-        {
-          num: '0.00',
-          title: "剩余学习币",
-          dispa: "查看剩余学习币",
-        },
-      ],
-    };
-  },
-  components: {
-    "my-gird": gird,
-    "my-odds": odds,
-    "my-service":Service
-  },
-  methods: {
-    goto(index,item) {
-      console.log(index)
-      if (index == 0) {
-        this.$router.push("/lessone");
-      } else if (index == 1) {
-        this.$router.push("/course");
-      } else if(index == 2){
-        this.$router.push("/Currency");
-        console.log(item.title);
+  import gird from "./components/Gird.vue";
+  import odds from "./components/Odds";
+  import Service from '../../components/Service'
+  export default {
+    data() {
+      return {
+        show: false,
+        isShow: false,
+        gird: [{
+            num: 0,
+            title: "我的特色课",
+            dispa: "已购特色课程的学习",
+          },
+          {
+            num: 0,
+            title: "一对一辅导",
+            dispa: "我的一对一老师辅导",
+          },
+          {
+            num: 0.0,
+            title: "剩余学习币",
+            dispa: "查看剩余学习币",
+          },
+        ],
+      };
+    },
+    components: {
+      "my-gird": gird,
+      "my-odds": odds,
+      "my-service": Service
+    },
+    computed: {
+      isShows() {
+        return this.$store.state.show
       }
     },
-    gotos(url) {
-      this.$router.push(url);
+    methods: {
+      goto(obj) {
+        // console.log(obj)
+        if (obj.title == "我的特色课") {
+          this.$router.push("/lessone");
+        } else if (obj.title == "一对一辅导") {
+          this.$router.push("/course");
+        } else if (obj.title == "剩余学习币") {
+          this.$router.push("/currency");
+        }
+      },
+      gotos(url) {
+        this.$router.push(url);
+      },
+      adds() {
+        this.show = !this.show;
+      },
+      service() {
+        this.isShow = true
+        this.$store.dispatch('addShow', this.isShow)
+      },
+      back() {
+        this.isShow = false
+        this.$store.dispatch('addBack', this.isShow)
+      }
     },
-    adds() {
-      this.show = !this.show;
-    },
-  },
-};
+  };
 </script>
 
 <style scoped lang='scss'>
-.userBody {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: #eee;
-
-  .img {
-    width: 90%;
-    height: 90%;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .bgcolor {
+  .userBody {
     width: 100%;
     height: 90vh;
     position: relative;
@@ -306,10 +303,7 @@ export default {
       }
     }
   }
-}
-.bottom {
-  margin-bottom: 1.5rem;
-}
+
 .qu {
   background-color: #fc5500;
   color: #fff;
