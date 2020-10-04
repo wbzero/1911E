@@ -433,6 +433,13 @@ export default {
   height: 3vh;
   border:1px;
 } */
+.xing{
+  display: block;
+  width: 0.65rem;
+  height: 0.65rem;
+  line-height: 0.65rem;
+  text-align: center;
+}
 .xing:hover{
   display: block;
   width: 0.65rem;
