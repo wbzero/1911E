@@ -354,8 +354,17 @@ const routes = [{
     meta:{
       show:false
     }
-  }
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: () => import('../views/lessone/order.vue'),
+    meta:{
+      show:false
+    }
+  },
 
+ 
 ]
 
 const router = new VueRouter({

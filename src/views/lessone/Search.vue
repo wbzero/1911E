@@ -9,7 +9,8 @@
    <van-icon name="arrow-left" @click="fanhui" size="0.4rem"/>
   </template>
   <template #action>
-    <div @click="onSearch">搜索</div>
+    <div @click="onSearch" v-if="isshow">搜索</div>
+    <div @click="fanhui" v-else style="color:#eee">取消</div>
   </template>
 </van-search>
 
@@ -19,11 +20,11 @@
      <div>
          <div class="search_lishi">
              <span style="">历史搜索</span>
-             <span><van-icon name="delete" @click="del"/></span>
+             <span><van-icon name="delete" @click="del" color="#eee"/></span>
          </div>
 
           <div class="search_jilu">
-              <van-tag type="primary" v-for="(item,index) in list" :key="index">{{item}}</van-tag>
+              <van-tag plain type="primary" round  text-color="#000" v-for="(item,index) in list" :key="index">{{item}}</van-tag>
           </div>
      </div>
 
@@ -39,7 +40,8 @@ export default {
         return{
             value:"",
             list:[],
-            show:false
+            show:false,
+            isshow:false
         }
     },
     created(){
@@ -48,10 +50,25 @@ export default {
            this.list=JSON.parse(list)
        }
     },
+    watch:{
+        value(a){
+            console.log(a)
+            if(a.length==0){
+                this.isshow = false
+            }else{
+                this.isshow = true
+            }
+        }
+    },
     methods:{
         onSearch(){
             this.list.push(this.value)
             this.value=""
+            if(this.value!=""){
+                console.log(111)
+            }else{
+                console.log(222)
+            }
             localStorage.list=JSON.stringify(this.list)
           this.show=true
 
