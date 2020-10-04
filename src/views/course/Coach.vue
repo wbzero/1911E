@@ -41,7 +41,7 @@
               <van-col span="4">星七</van-col>
             </van-row>
             <!-- 天 -->
-            <van-row type="flex" justify="space-around" style="margin-left:0.5rem;margin-top:0.5rem;">
+            <van-row type="flex" justify="space-around" style="margin-left:0.35rem;margin-top:0.5rem;">
               <van-col span="4"><span style="font-size:0.4rem" class="xing">28</span></van-col>
               <van-col span="4"><span style="font-size:0.4rem" class="xing">29</span></van-col>
               <van-col span="4"><span style="font-size:0.4rem" class="xing">30</span></van-col>
@@ -50,14 +50,14 @@
               <van-col span="4"><span style="font-size:0.4rem" class="xing">3 </span></van-col>
               <van-col span="4"><span style="font-size:0.4rem" class="xing">4 </span></van-col>
             </van-row>
-            <van-row type="flex" justify="space-around" style="margin-left:0.5rem;margin-top:0.5rem">
-              <van-col span="4"><span style="font-size:0.4rem">5</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">6</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">7</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">8</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">9</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">10</span></van-col>
-              <van-col span="4"><span style="font-size:0.4rem">11</span></van-col>
+            <van-row type="flex" justify="space-around" style="margin-left:0.35rem;margin-top:0.5rem">
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">5</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">6</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">7</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">8</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">9</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">10</span></van-col>
+              <van-col span="4"><span style="font-size:0.4rem" class="xing">11</span></van-col>
             </van-row>
           </div>
           <!-- 时段 -->
@@ -419,11 +419,13 @@ export default {
   font-size: 0.3rem;
   color: rgb(94, 92, 92);
 }
-/* .van-row{
-  width: 90%;
-  height: 3vh;
-  border:1px;
-} */
+.xing{
+  display: block;
+  width: 0.65rem;
+  height: 0.65rem;
+  line-height: 0.65rem;
+  text-align: center;
+}
 .xing:hover{
   display: block;
   width: 0.65rem;
