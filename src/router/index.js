@@ -141,6 +141,14 @@ const routes = [{
     }
   },
   {
+    path: '/practice', // 约课记录页面
+    name: 'Practice',
+    component: () => import('../views/practice/index.vue'),
+    meta: {
+      show: true
+    }
+  },
+  {
     path: '/coach', // 约课记录里的一对一辅导
     name: 'coach',
     component: () => import('../views/course/Coach.vue'),
