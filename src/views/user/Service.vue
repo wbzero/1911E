@@ -6,6 +6,7 @@
         <input type="text" placeholder="请输入验证码">
         <input type="password" placeholder="请输入密码">
         <span class="setpwd_main_btn" @click="setting">获取验证码</span>
+        
       </div>
       <div class="setpwd_btn">
         确 定

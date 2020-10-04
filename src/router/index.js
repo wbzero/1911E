@@ -21,14 +21,6 @@ const routes = [{
     }
   },
   {
-    path: '/practice',
-    name: 'Practice',
-    component: () => import('../views/practice/index.vue'),
-    meta: {
-      show: true
-    }
-  },
-  {
     path: '/item',
     name: 'Item',
     component: () => import('../views/practice/Item.vue'),
@@ -234,9 +226,9 @@ const routes = [{
       show: false
     }
   },
-
+    
   {
-    path: '/currency',
+    path: '/Currency', //我的余额
     name: 'Currency',
     component: () => import('../views/user/Currency.vue'),
     meta: {
@@ -244,7 +236,7 @@ const routes = [{
     }
   },
   {
-    path: '/friends',
+    path: '/friends', // 我的关注
     name: 'Friends',
     component: () => import('../views/user/Friends.vue'),
     meta: {
@@ -252,7 +244,7 @@ const routes = [{
     }
   },
   {
-    path: '/star',
+    path: '/star', // 我的收藏
     name: 'Star',
     component: () => import('../views/user/Star.vue'),
     meta: {
@@ -260,7 +252,7 @@ const routes = [{
     }
   },
   {
-    path: '/bill',
+    path: '/bill', // 课程订单
     name: 'Bill',
     component: () => import('../views/user/Bill.vue'),
     meta: {
@@ -268,7 +260,7 @@ const routes = [{
     }
   },
   {
-    path: '/bills',
+    path: '/bills', //会员订单
     name: 'Bills',
     component: () => import('../views/user/Bills.vue'),
     meta: {
@@ -276,7 +268,7 @@ const routes = [{
     }
   },
   {
-    path: '/billse',
+    path: '/billse', // 约课订单
     name: 'Billse',
     component: () => import('../views/user/Billse.vue'),
     meta: {
@@ -284,7 +276,7 @@ const routes = [{
     }
   },
   {
-    path: '/coupon',
+    path: '/coupon', //我的优惠券
     name: 'Coupon',
     component: () => import('../views/user/Coupon.vue'),
     meta: {
@@ -292,7 +284,7 @@ const routes = [{
     }
   },
   {
-    path: '/card',
+    path: '/card', //我的学习卡
     name: 'Card',
     component: () => import('../views/user/Card.vue'),
     meta: {
@@ -300,7 +292,7 @@ const routes = [{
     }
   },
   {
-    path: '/diamond',
+    path: '/diamond', // 开通会员
     name: 'Diamond',
     component: () => import('../views/user/Diamond.vue'),
     meta: {
@@ -308,7 +300,7 @@ const routes = [{
     }
   },
   {
-    path: '/bell',
+    path: '/bell', // 消息通知
     name: 'Bell',
     component: () => import('../views/user/Bell.vue'),
     meta: {
@@ -316,7 +308,7 @@ const routes = [{
     }
   },
   {
-    path: '/invition',
+    path: '/invition', //意见反馈
     name: 'Invition',
     component: () => import('../views/user/Invition.vue'),
     meta: {
@@ -324,7 +316,7 @@ const routes = [{
     }
   },
   {
-    path: '/service',
+    path: '/service', // 在线客服
     name: 'Service',
     component: () => import('../views/user/Service.vue'),
     meta: {
@@ -332,7 +324,7 @@ const routes = [{
     }
   },
   {
-    path: '/setting',
+    path: '/setting', // 设置
     name: 'Setting',
     component: () => import('../views/user/Setting.vue'),
     meta: {
@@ -340,15 +332,7 @@ const routes = [{
     }
   },
   {
-    path: '/search',
-    name: 'Search',
-    component: () => import('../views/lessone/Search.vue'),
-    meta:{
-      show:true
-    }
-  },
-  {
-    path: '/info',
+    path: '/info', //个人信息
     name: "Info",
     component: () => import('../views/user/Info.vue'),
     meta:{

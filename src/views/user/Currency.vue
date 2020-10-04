@@ -1,11 +1,15 @@
 <template>
   <div class="currency-box">
       <div class="top_title">
-       <my-gird :title="title" :details="details"/>
-       <div class="bottom">
-           <span>我的余额</span>
-           <span style="color: orange;">0学习币</span>
-       </div>
+          <div class="title-box">
+               <div><van-icon name="arrow-left" @click="back"/></div>
+               <div>我的余额</div>
+               <div><span>余额明细</span> </div>
+        </div>
+             <div class="bottom">
+                 <span>我的余额</span>
+                 <span style="color: orange;">0学习币</span>
+             </div>
       </div>
       <div class="subject">
           <div class="item" v-for="(item,index) in num" :key="index">
@@ -13,17 +17,14 @@
               <span style="color:orange;">￥{{item}}</span>
           </div>
       </div>
-      <div class="footer"></div>
+      <div class="footer">立即充值</div>
   </div>
 </template>
 
 <script>
-import title from "./components/Title"
 export default {
     data() {
         return {
-            title:"我的余额",
-            details:"余额明细",
             num:[
                "30000.00",
                "20000.00",
@@ -36,14 +37,32 @@ export default {
             ]
         }
     },
-   components: {
-			"my-gird": title
-    },
+//    components: {
+// 			"my-gird": title
+//     },
+    methods:{
+        back(){
+            window.history.back()
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped >
-
+.title-box{
+    width: 100%;
+    height: 1rem;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0rem 0.5rem;
+    background-color: #fff;
+    
+}
+.title-box div{
+   font-size: 0.3rem;
+}
 
 .currency-box{
     width: 100%;
@@ -90,6 +109,10 @@ export default {
         width: 100%;
         height: 8vh;
         background-color: orangered;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
     }
   
 }

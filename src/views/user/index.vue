@@ -1,62 +1,148 @@
 <template>
   <div class="userBody">
-    <div class="bgcolor"></div>
-    <div class="main_box">
-      <div class="top_title">
-        <van-row class="top_title_user" align="center">
-          <van-col span="8">
-            <van-image @click="gotos('/info')" style="margin-left: 1rem;" round width="1rem" height="1rem"
-              src="https://img.yzcdn.cn/vant/cat.jpeg" />
-          </van-col>
-          <van-col span="8">131*******9554</van-col>
-          <van-col span="8"></van-col>
-        </van-row>
+    <div>
+      <div class="bgcolor"></div>
+      <div class="main_box">
+        <div class="top_title">
+          <van-row class="top_title_user" align="center">
+            <van-col span="6">
+              <van-image
+                style="margin-left: 0.5rem"
+                @click="gotos('/info')"
+                round
+                width="1rem"
+                height="1rem"
+                src="https://img.yzcdn.cn/vant/cat.jpeg"
+              />
+            </van-col>
+            <van-col span="10" @click="gotos('/info')">131****9554</van-col>
+            <van-col span="8">
+              <div class="qu" @click="gotos('/coach')">去约课</div>
+            </van-col>
+          </van-row>
 
-        <div class="top_title_gird">
-          <my-gird class="indexs" @goto="goto(item)" v-for="(item, index) in gird" :key="index" :item="item" />
+          <div class="top_title_gird">
+            <my-gird
+              class="indexs"
+              v-for="(item, index) in gird"
+              :key="index"
+              :item="item" 
+              @goto="goto(index,item)"
+            />
+          </div>
         </div>
-      </div>
-      <div @click="adds">
-        <my-odds />
-      </div>
-      <div class="courses">
-        <div class="course_title">课程相关</div>
-        <div class="primary">
-          <van-grid>
-            <van-grid-item @click="gotos('/friends')" icon="friends" text="关注的老师" />
-            <van-grid-item @click="gotos('/star')" icon="star" text="我的收藏" />
-          </van-grid>
+        <div @click="adds">
+          <my-odds />
         </div>
-      </div>
-      <div class="courses">
-        <div class="course_title">订单相关</div>
-        <div class="primary">
-          <van-grid>
-            <van-grid-item @click="gotos('/bill')" icon="bill" text="课程订单" />
-            <van-grid-item @click="gotos('/bills')" icon="bill" text="会员订单" />
-            <van-grid-item @click="gotos('/billse')" icon="bill" text="约课订单" />
-          </van-grid>
+        <div class="courses">
+          <div class="course_title">课程相关</div>
+          <div class="primary">
+            <van-grid>
+              <van-grid-item
+                @click="gotos('/friends')"
+                text="关注的老师"
+              >
+              <template #icon>
+                <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-gerenzhongxin-wodeguanzhu"></span>
+              </template>
+              </van-grid-item>
+              <van-grid-item
+                @click="gotos('/star')"
+                text="我的收藏"
+              >
+              <template #icon>
+                <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-wodeshoucang"></span>
+              </template>
+              </van-grid-item>
+            </van-grid>
+          </div>
         </div>
-      </div>
-      <div class="courses">
-        <div class="course_title">我的账户</div>
-        <div class="primary">
-          <van-grid>
-            <van-grid-item @click="gotos('/coupon')" icon="coupon" text="优惠券" />
-            <van-grid-item @click="gotos('/card')" icon="card" text="学习卡" />
-            <van-grid-item @click="gotos('/diamond')" icon="diamond" text="会员" />
-          </van-grid>
+        <div class="courses">
+          <div class="course_title">订单相关</div>
+          <div class="primary">
+            <van-grid>
+              <van-grid-item
+                @click="gotos('/bill')"
+                text="课程订单"
+              >
+              <template #icon>
+                <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-dingdan"></span>
+              </template>
+               </van-grid-item>
+              <van-grid-item
+                @click="gotos('/bills')"
+                text="会员订单">
+                <template #icon>
+                <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-dingdan"></span>
+              </template>
+                 </van-grid-item>
+              <van-grid-item
+                @click="gotos('/billse')"
+                text="约课订单">
+                <template #icon>
+                <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-dingdan"></span>
+              </template>
+                 </van-grid-item>
+            </van-grid>
+          </div>
         </div>
-      </div>
-      <div class="courses">
-        <div class="course_title">自助服务</div>
-        <div class="primary">
-          <van-grid>
-            <van-grid-item @click="gotos('/bell')" icon="bell" text="我的消息" />
-            <van-grid-item @click="gotos('/invition')" icon="invition" text="意见反馈" />
-            <van-grid-item @click="service" icon="service-o" text="在线服务" />
-            <van-grid-item @click="gotos('/setting')" icon="setting" text="设置" />
-          </van-grid>
+        <div class="courses">
+          <div class="course_title">我的账户</div>
+          <div class="primary">
+            <van-grid>
+              <van-grid-item
+                @click="gotos('/coupon')"
+                text="优惠券"
+              >
+              <template #icon>
+                <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-youhuiquan"></span>
+              </template>
+               </van-grid-item>
+              <van-grid-item
+                @click="gotos('/card')"
+                text="学习卡"
+              >
+              <template #icon>
+                <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-icon-test"></span>
+              </template>
+               </van-grid-item>
+              <van-grid-item
+                @click="gotos('/diamond')"
+                text="会员"
+              >
+              <template #icon>
+                <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-huiyuan"></span>
+              </template>
+               </van-grid-item>
+            </van-grid>
+          </div>
+        </div>
+        <div class="courses bottom">
+          <div class="course_title">自助服务</div>
+          <div class="primary">
+            <van-grid>
+              <van-grid-item @click="gotos('/bell')" text="我的消息">
+               <template #icon>
+                  <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-xiaoxi-"></span>
+                </template>
+               </van-grid-item>
+               <van-grid-item @click="gotos('/invition')" text="意见反馈">
+                   <template #icon>
+                     <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-yijianfankui"></span>
+                   </template>
+               </van-grid-item>
+                <van-grid-item @click="gotos('/service')" text="在线服务">
+                <template #icon>
+                  <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-kefu"></span>
+                </template>
+               </van-grid-item>
+              <van-grid-item @click="gotos('/setting')" text="设置">
+                <template #icon>
+                  <span style="font-size:0.56rem;color: #FF944B;" class="iconfont icon-shezhi"></span>
+                </template>
+               </van-grid-item>
+            </van-grid>
+          </div>
         </div>
       </div>
     </div>
@@ -65,73 +151,76 @@
   </div>
 </template>
 <script>
-  import gird from "./components/Gird.vue";
-  import odds from "./components/Odds";
-  import Service from '../../components/Service'
-  export default {
-    data() {
-      return {
-        show: false,
-        isShow: false,
-        gird: [{
-            num: 0,
-            title: "我的特色课",
-            dispa: "已购特色课程的学习",
-          },
-          {
-            num: 0,
-            title: "一对一辅导",
-            dispa: "我的一对一老师辅导",
-          },
-          {
-            num: 0.0,
-            title: "剩余学习币",
-            dispa: "查看剩余学习币",
-          },
-        ],
-      };
-    },
-    components: {
-      "my-gird": gird,
-      "my-odds": odds,
-      "my-service": Service
-    },
-    computed: {
-      isShows() {
-        return this.$store.state.show
+import gird from "./components/Gird.vue";
+import odds from "./components/Odds";
+import Service from '../../components/Service'
+export default {
+  data() {
+    return {
+      show: false,
+      gird: [
+        {
+          num: 0,
+          title: "我的特色课",
+          dispa: "已购特色课程的学习",
+        },
+        {
+          num: 0,
+          title: "一对一辅导",
+          dispa: "我的一对一老师辅导",
+        },
+        {
+          num: '0.00',
+          title: "剩余学习币",
+          dispa: "查看剩余学习币",
+        },
+      ],
+    };
+  },
+  components: {
+    "my-gird": gird,
+    "my-odds": odds,
+    "my-service":Service
+  },
+  methods: {
+    goto(index,item) {
+      console.log(index)
+      if (index == 0) {
+        this.$router.push("/lessone");
+      } else if (index == 1) {
+        this.$router.push("/course");
+      } else if(index == 2){
+        this.$router.push("/Currency");
+        console.log(item.title);
       }
     },
-    methods: {
-      goto(obj) {
-        // console.log(obj)
-        if (obj.title == "我的特色课") {
-          this.$router.push("/lessone");
-        } else if (obj.title == "一对一辅导") {
-          this.$router.push("/course");
-        } else if (obj.title == "剩余学习币") {
-          this.$router.push("/currency");
-        }
-      },
-      gotos(url) {
-        this.$router.push(url);
-      },
-      adds() {
-        this.show = !this.show;
-      },
-      service() {
-        this.isShow = true
-        this.$store.dispatch('addShow', this.isShow)
-      },
-      back() {
-        this.isShow = false
-        this.$store.dispatch('addBack', this.isShow)
-      }
+    gotos(url) {
+      this.$router.push(url);
     },
-  };
+    adds() {
+      this.show = !this.show;
+    },
+  },
+};
 </script>
 
 <style scoped lang='scss'>
-  .userBody {
+.userBody {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #eee;
+
+  .img {
+    width: 90%;
+    height: 90%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .bgcolor {
     width: 100%;
     height: 90vh;
     position: relative;
@@ -217,5 +306,19 @@
       }
     }
   }
-
+}
+.bottom {
+  margin-bottom: 1.5rem;
+}
+.qu {
+  background-color: #fc5500;
+  color: #fff;
+  width: 0.9rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 52%;
+  padding: 0.1rem;
+  border-radius: 0.1rem 0rem 0rem 0.1rem;
+}
 </style>
