@@ -196,24 +196,40 @@
     <!-- 老师名单 -->
     <div class="teachers">
       <div style="height: 0.02rem"></div>
-      <div class="teacher_s" v-for="i in 10" :key="i" v-show="show">
+      <div class="teacher_s" v-for="(item,index) in userList" :key="index" v-show="show">
         <div class="tearch_img">
-          <div class="img_img"></div>
+          <div class="img_img">
+            <img :src="item.avatar" alt="" style="width: 100%;height: 100%">
+          </div>
           <div class="img_content">
-            <div>杨德胜</div>
-            <div style="color: #b7b7b7; font-size: 10px">男 10年教龄</div>
+            <div>{{item.real_name}}</div>
+            <div style="color: #b7b7b7; font-size: 10px">{{item.sex|sexs}} {{item.age}}年教龄</div>
           </div>
         </div>
-        <div class="yu_yue" @click="goAppointment">预约</div>
+        <div class="yu_yue" @click="goAppointment(item.teacher_id)">预约</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import {invite} from "../../api/api"
   export default {
+    //过滤
+    filters:{
+      sexs(val){
+        if(val==0){
+          return "男"
+        }else{
+          return "女"
+        }
+      }
+    },
+    //初始化数据
+
     data() {
       return {
+        userList:[],
         show: true,
         shows: false,
         showss: false,
@@ -235,10 +251,28 @@
         currentTime: "00:00",
       };
     },
+    async mounted(){
+      let obj={
+        page: 1,
+        limit: 10,
+        attr_val_id: 18
+      }
+      var res=await invite(obj)
+      if(res.data.code==200){
+        this.userList=res.data.data
+        console.log(res.data.data)
+      }
+
+    },
     methods: {
-      goAppointment() {
-        console.log("dfgn");
-        this.$router.push("/appointment");
+      goAppointment(index) {
+        console.log(index);
+        this.$router.push({
+          path:"/appointment",
+          query:{
+            id:index
+          }
+        });
       },
       left() {
         window.history.back();
@@ -246,10 +280,10 @@
       goSearch() {
         this.$router.push("/search");
       },
-      goAppointment() {
-        console.log(32132);
-        this.$router.push("/appointment");
-      },
+      // goAppointment() {
+      //   console.log(32132);
+      //   this.$router.push("/appointment");
+      // },
       goSearch() {
         this.$router.push("/search");
       },

@@ -17,12 +17,12 @@
       <div class="attention">
         <div class="attention_left">
           <img
-            :src="list.img"
+            :src="tearch.avatar"
             style="width: 0.8rem; height: 0.8rem; border-radius: 50%"
           />
           <div class="attention_left_div">
             <div class="attention_left_h">
-              <p style="font-size: 0.3rem">{{ list.name }}</p>
+              <p style="font-size: 0.3rem">{{tearch.real_name }}</p>
               <p style="color: rgba(246, 195, 161); margin: 0 0.1rem">M20</p>
             </div>
             <span style="color: gray; display: inline-block; margin: 0.1rem 0"
@@ -86,8 +86,7 @@
                 <div class="introduce_content_intro">
                   <div class="introduce_content_intro_left">老师介绍</div>
                   <div class="introduce_content_intro_right">
-                    　杨老师,特级教师.多次被中国数学会评为全国高中数学竞联赛优秀教练员。长期从事名校理科班的数学教学和数学竞赛辅导工作。辅导学生参加全国高中数学联赛有数百人次获全国高中数学联赛一、二、三等奖，数十人被免试保送到清华大学、北京大学等名牌大学学习。十多人获CMO获一、二、三等奖，一人获IMO金牌。
-                    　　特别是近年来大学试行自主招生，有很多同学通过上他的竞赛辅导课进入清华大学、北京大学、上海交通大学等。
+                    　{{tearch.introduction}}
                   </div>
                 </div>
               </div>
@@ -101,13 +100,13 @@
               <div class="Boutique_bottom">
                 <ul>
                   <li
-                    v-for="(item, index) in userList"
+                    v-for="(item, index) in tearchList"
                     :key="index"
-                    @click="Coursedetail"
+                    @click="Coursedetail(item.id)"
                   >
                     <div class="Boutique_bottom_top">
                       <p style="font-size: 0.31rem">
-                        {{item.title}}
+                        {{ item.title }}
                       </p>
 
                       <span
@@ -122,7 +121,7 @@
 
                     <div class="Boutique_bottom_img1">
                       <img
-                        :src="item.img"
+                        :src="item.cover_img"
                         alt=""
                         style="
                           width: 0.6rem;
@@ -130,13 +129,15 @@
                           border-radius: 50%;
                         "
                       />
-                      <p>{{item.name}}</p>
+                      <p>{{ item.name }}</p>
                     </div>
                     <div class="Boutique_bottom_free">
                       <span style="color: gray; font-size: 0.3rem"
-                        >100人已报名</span
+                        >{{ item.sales_num }}人已报名</span
                       >
-                      <span style="color: green; font-size: 0.3rem">免费</span>
+                      <span style="color: green; font-size: 0.3rem">{{
+                        item.price | prices
+                      }}</span>
                     </div>
                   </li>
                 </ul>
@@ -160,7 +161,20 @@
 
 <script>
 import { Toast } from "vant";
+import { getAppIndex, tearch, kecheng } from "../../../api/api";
 export default {
+  // 过滤
+  filters: {
+    prices(val) {
+      var str = "";
+      if (val == 0) {
+        str = "免费";
+      } else {
+        str = 1;
+      }
+      return str;
+    },
+  },
   data() {
     return {
       active: 0,
@@ -169,31 +183,55 @@ export default {
       userList: [],
       val: this.$route.query.val,
       userList: [],
+      tearchList: [],
+      tearch:{}
     };
   },
-
-  mounted() {
-    this.$axios.get("http://localhost:8080/data.json").then((res) => {
-      console.log(res.data.data);
-      res.data.data.filter((item) => {
-        if (item.id == this.val) {
-          this.list = item;
-          console.log(item);
-        }
-      });
-    });
+  created() {
     this.$axios.get("http://localhost:8080/data1.json").then((res) => {
       // console.log(res.data.data);
       this.userList = res.data.data;
     });
+  },
+
+  async mounted() {
+    var res = await getAppIndex();
+
+    res.data.data[4].list.filter((item) => {
+      if (item.teacher_id == this.val) {
+        this.list = item;
+      }
+    });
+
+    // 老师介绍
+    var te = await tearch(this.val);
+ 
+      console.log(te.data.data.teacher);
+      this.tearch=te.data.data.teacher
+    
+    // 主讲课程
+    var zhu = await kecheng();
+    if (zhu.code == 200) {
+      zhu.data.list.filter((item) => {
+        if (item.teachers_list[0].teacher_name == this.tearch.real_name) {
+          this.tearchList.push(item);
+  
+        }
+      });
+    }
   },
   methods: {
     // 点击返回
     back() {
       window.history.back();
     },
-    Coursedetail() {
-      this.$router.push("/Coursedetail");
+    Coursedetail(index) {
+      this.$router.push({
+        path: "/Coursedetail",
+        query: {
+          val1: index,
+        },
+      });
     },
     attention() {
       if (this.tex == "关注") {
@@ -247,6 +285,7 @@ export default {
 .introduce_content_intro_right {
   width: 80%;
   color: gray;
+  font-size: 0.3rem
 }
 .tearch_wrap {
   width: 100%;
@@ -331,7 +370,7 @@ export default {
   width: 100%;
   height: 0.8rem;
   /* border: 1px solid red; */
-  margin: 0.4rem 0;
+  margin: 0.8rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

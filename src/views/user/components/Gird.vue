@@ -13,7 +13,7 @@ export default {
   },
   methods:{
     goto(){
-      this.$emit("goto")
+      this.$emit("goto",this.item)
     }
   }
 

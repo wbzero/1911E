@@ -21,6 +21,8 @@ export default {
       this.$router.push('/service')
     },
     backlogin(){
+      localStorage.removeItem("sascode")
+      localStorage.removeItem("tocken")
       this.$router.push('/login')
     }
   },

@@ -1,161 +1,170 @@
 <template>
-    <div class="login_body">
-        <div class="img" v-if="isshow">
-            <img src="../assets/A0启动图.jpg" alt="">
-        </div>
-        <div class="main" v-if="!isshow">
-            <div class="imgs">
-                <img src="../assets/吖.png" alt="">
-            </div>
-            <div class="from">
-                <van-form @submit="onSubmit">
-                    <van-field v-model="username" name="用户名" placeholder="用户名"
-                        :rules="[{ required: true, message: '请输入手机号' }]" />
-                    <van-field v-model="password" type="password" name="密码" placeholder="密码"
-                        :rules="[{ required: true, message: '请输入密码' }]" />
-                    <div style="margin: 16px;">
-                        <div class="dd"><span>找回密码</span> <span>注册/验证码登录</span></div>
-                        <van-button round block class="btn" native-type="submit">
-                            登录
-                        </van-button>
-                    </div>
-                </van-form>
-
-            </div>
-
-        </div>
-        <div>
-            <div>
-                {{this.$route.query.item}}
-            </div>
-            <button @click="add">123</button>
-        </div>
+  <div class="login_body">
+    <div class="imgs">
+      <img
+        src="http://120.53.31.103:84/uploads/image/2020-05-27/sDSSCsWo1oSMRqHp7QqUSDzTeqn2f76nDH4SgAk1.jpeg"
+        alt=""
+      />
     </div>
+    <div class="main">
+      <div class="from">
+        <van-form>
+          <van-field
+            v-model="username"
+            name="用户名"
+            placeholder="用户名"
+            :rules="[{ required: true, message: '请输入手机号' }]"
+          />
+          <van-field
+            v-model="password"
+            type="password"
+            name="密码"
+            placeholder="密码"
+            :rules="[{ required: true, message: '请输入密码' }]"
+          />
+          <div style="margin: 16px">
+            <div class="dd">
+              <span>找回密码</span>
+              <span>注册/ <span @click="loginpass">验证码登录</span> </span>
+            </div>
+            <van-button class="btn" native-type="submit" @click="onSubmit">
+              登录
+            </van-button>
+          </div>
+        </van-form>
+      </div>
+    </div>
+    <div>
+      <div>
+        {{ this.$route.query.item }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                isshow: true,
-                username: '',
-                password: '',
-                list: {},
-                it: {},
-                list2: []
+import { Toast } from "vant";
+import { login } from "../api/api";
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+      list: {},
+      it: {},
+      list2: [],
+    };
+  },
+  mounted() {},
+  methods: {
+    onSubmit() {
+      console.log(1111);
+      setTimeout(() => {
+        //判断电话号是否是11位
+        var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+        var pass = /^[0-9A-Za-z]{5,}$/;
+        if (myreg.test(this.username) && pass.test(this.password)) {
+          let obj = {
+            mobile: this.username,
+            password: this.password,
+            type: 1,
+          };
+          login(obj).then((res) => {
+            console.log(res);
+            if (res.code == 200) {
+              this.list = res.data;
+              localStorage.setItem("sascode", JSON.stringify(this.list));
+              localStorage.setItem(
+                "adminToken",
+                res.data.remember_token
+              );
+              this.$router.push({
+                path:"/user"
+              });
+            } else {
+              Toast("账号或密码错误");
             }
-        },
-        mounted() {
-            var timer = setTimeout(() => {
-                this.isshow = false
-            }, 1000)
-            let list = localStorage.list
-            if (list) {
-                this.list = JSON.parse(list)
-            }
-            let list2 = localStorage.list2;
-            if (list2) {
-                this.list2 = JSON.parse(list2);
-            }
-        },
-        methods: {
-            onSubmit(values) {
-                // console.log('submit', values);
-                // this.$axios.post('http://xx.com/api/adminUser/login',{
-                //     params:{
-                //         username:this.username,
-                //         password:this.password
-                //     }
-                // }).then((res)=>{
-                //     console.log(res)
-                // }).catch(error=>{
-                //     console.log(error)
-                // })
-                localStorage.list = JSON.stringify({
-                    username: this.username,
-                    password: this.password
-                })
-                this.$router.push("/")
-            },
-            add() {
-                let it = this.$route.query.item
-                console.log(it)
+          });
+        } else {
+          Toast("请输入正确的手机号或密码");
+        }
+      }, 2000);
+    },
+    add() {
+      let it = this.$route.query.item;
+      console.log(it);
 
-                this.$router.push({
-                    path: "/order"
-                })
-
-                //     this.list2.map(item=>{
-                //         if(item.id == this.$route.query.item){
-                //             item.boull = true
-                //             localStorage.list2 =JSON.stringify(this.list2)
-                //         }
-                //     })
-                //    console.log(1,this.list2)
-            }
-        },
-    }
+      this.$router.push({
+        path: "/order",
+      });
+    },
+    loginpass() {
+      this.$router.push({
+        path: "/loginpass",
+      });
+    },
+  },
+};
 </script>
 
 <style scoped lang='scss'>
-    .login_body {
-        width: 100%;
-        height: 100vh;
+.login_body {
+  width: 100%;
+  height: 100vh;
 
-        .img {
-            width: 100%;
-            height: 100%;
+  .img {
+    width: 100%;
+    height: 100%;
 
-            img {
-                width: 100%;
-                height: 100%;
-
-            }
-        }
-
-        .dd {
-            width: 100%;
-            height: 0.5rem;
-            display: inline-flex;
-            justify-content: space-between;
-            color: gray;
-
-        }
-
-        .main {
-            width: 80%;
-            height: 100%;
-            margin-left: 10%;
-
-            .from {
-                width: 100%;
-                height: 5rem;
-                display: inline-flex;
-                align-items: flex-end;
-
-                .van-form {
-                    width: 100vw;
-                    height: 3rem;
-                }
-            }
-        }
+    img {
+      width: 100%;
+      height: 100%;
     }
+  }
 
-    .btn {
-        background: linear-gradient(to right, #F29858, #EB6201);
-        color: #fff;
+  .dd {
+    width: 100%;
+    height: 0.5rem;
+    display: inline-flex;
+    justify-content: space-between;
+    color: gray;
+  }
+
+  .main {
+    width: 80%;
+    // height: 100%;
+    margin-left: 10%;
+
+    .from {
+      width: 100%;
+      height: 3.5rem;
+      display: inline-flex;
+      align-items: flex-end;
+
+      .van-form {
+        width: 100vw;
+        height: 3rem;
+      }
     }
+  }
+}
 
-    .imgs {
-        width: 100%;
-        height: 2rem;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+.btn {
+  background: linear-gradient(to right, #e61a2a, #e61a2a);
+  color: #fff;
+  margin: 0.5rem 0;
+}
 
-        img {
-            margin-top: 1rem;
-            width: 82%;
-        }
-    }
+.imgs {
+  width: 100%;
+  height: 4.5rem;
+  display: inline-flex;
+  // justify-content: center;
+  // align-items: center;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
 </style>

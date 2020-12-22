@@ -1,15 +1,10 @@
  <template>
   <div class="lessone_wrap">
     <div class="index_daohang">
-      <!-- 头部 -->
-      <van-nav-bar  class="index_toubu">
-        <template #title>
-         <span style="font-size: 4.8vw;color:#595959;">特色课</span>
-        </template>
-        <template #right>
-          <van-icon name="search" size="23" color="gray" @click="search" />
-        </template>
-      </van-nav-bar>
+      <div class="nav_top">
+        <div class="searchs"><van-icon name="search" size="12" /></div>
+        <input type="text" id="tex" placeholder="搜索课程" @click="search" />
+      </div>
 
       <!-- 筛选导航 -->
 
@@ -42,172 +37,106 @@
               </div>
             </div>
             <div class="seach-btn">
-              <van-button type="default">重置</van-button>
-              <van-button class="sure" type="default">确认</van-button>
+              <van-button type="default" @click="chong">重置</van-button>
+              <van-button class="sure" type="default" @click="chong"
+                >确认</van-button
+              >
             </div>
           </div>
         </van-dropdown-item>
         <!-- 排序 -->
-        <van-dropdown-item title="排序" v-model="value" :options="option" />
+        <van-dropdown-item
+          title="排序"
+          v-model="value"
+          :options="option"
+          @change="sorts(value)"
+        />
         <!-- 筛选 -->
-        <van-dropdown-item title="筛选" ref="item">
+        <van-dropdown-item title="筛选" ref="item" v-show="isShows">
           <div class="choose">
             <div class="tmk-item">
-              <span>全部</span>
-              <span>大班课</span>
-              <span>小班课</span>
-              <span>公开课</span>
-              <span>点播课</span>
-              <span>面授课</span>
-              <span>音频课</span>
-              <span>系统课</span>
-              <span>图文课</span>
-              <span>会员课</span>
+              <span
+                v-for="(item, index) in arrs"
+                :key="index"
+                @click="screen(item.id)"
+                >{{ item.name }}</span
+              >
             </div>
           </div>
         </van-dropdown-item>
       </van-dropdown-menu>
     </div>
 
-    <div class="hezi"></div>
-
-    <div class="neirong">
-      <!-- 内容 -->
-      <div
-        class="index_nrirong"
-        v-for="(item, index) in list2"
-        :key="index"
-        @click="Coursedetail(item.id)"
-      >
-        <div class="index_nrirong_one">
-          <div class="index_neirong_two">
-            <div style="font-size: 0.3rem">
-              {{ item.title }}
-            </div>
-            <div>
-              <span
-                class="iconfont icon-zhongbiao"
-                style="font-size: 0.25rem; color: gray"
-                >共8课时</span
-              >
-            </div>
-            <br />
-            <div class="why">
-              <span style="display: flex">
-                <span>
-                  <img
-                    :src="item.img"
-                    alt=""
-                    style="width: 0.5rem; height: 0.5rem"
-                /></span>
-                <span
-                  style="margin-left: 0.1rem; font-size: 0.25rem; color: gray"
-                  >{{ item.name }}</span
-                >
-              </span>
-              <span
-                ><img
-                  src="http://localhost:8080/img/11.png"
-                  alt=""
-                  v-show="show"
-                  style="width: 1.3rem; height: 1.3rem"
-              /></span>
-            </div>
-          </div>
-
-          <div class="index_neirong_yi">
-            <span style="font-size: 0.24rem; color: gray"
-              >{{ item.baoming }}人已报名</span
-            >
-            <span style="font-size: 0.3rem; color: #44a426">{{
-              item.jiage
-            }}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="neirong">
-        <!-- 内容 -->
-        <div
-          class="index_nrirong"
-          v-for="(item, index) in list3"
+    <div class="content_text">
+      <ul>
+        <li
+          v-for="(item, index) in userList"
           :key="index"
-          @click="tiao(item.id)"
+          @click="goCoursedetail(item)"
         >
-          <div class="index_nrirong_one">
-            <div class="index_neirong_two">
-              <div style="font-size: 0.3rem">
-                {{ item.title }}
-              </div>
-              <div>
-                <span
-                  class="iconfont icon-zhongbiao"
-                  style="font-size: 0.25rem; color: gray"
-                  >共8课时</span
-                >
-              </div>
-              <!-- <br /> -->
-              <div class="why">
-                <span style="display: flex">
-                  <span>
-                    <img
-                      :src="item.img"
-                      alt=""
-                      style="width: 0.5rem; height: 0.5rem"
-                  /></span>
-                  <span
-                    style="margin-left: 0.1rem; font-size: 0.25rem; color: gray"
-                    >{{ item.name }}</span
-                  >
-                </span>
-                <span
-                  ><img
-                    src="http://localhost:8080/img/11.png"
-                    alt=""
-                    v-show="show"
-                    style="width: 1.3rem; height: 1.3rem"
-                /></span>
-              </div>
-            </div>
-
-            <div class="index_neirong_yi">
-              <span style="font-size: 0.24rem; color: gray"
-                >{{ item.baoming }}人已报名</span
+          <img
+            :src="item.cover_img"
+            alt=""
+            style="
+              width: 2rem;
+              height: 1.2rem;
+              margin: 0 0.2rem 0 0rem;
+              border-radius: 0.2rem;
+            "
+          />
+          <div class="content_div">
+            <p style="font-size: 0.3rem">{{ item.title }}</p>
+            <div>
+              <span style="color: gray">{{ item.has_buy }}万+人已报名</span>
+              <span
+                style="color: green; font-size: 0.3rem"
+                v-if="item.price == 0"
+                >{{ item.price | prices }}</span
               >
-              <span style="font-size: 0.3rem; color: red">
-                <img
-                  src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/20191HHDExgz0u1567065946.png"
-                  style="width: 0.24rem; height: 0.24rem"
-                  alt=""
-                />
-                {{ item.jiage }}</span
-              >
+              <span style="color: red; font-size: 0.3rem" v-else>{{
+                item.price | prices
+              }}</span>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="hezi1">没有更多内容啦！！！</div>
+        </li>
+      </ul>
+      <div class="bottom_div">没有更多了</div>
     </div>
   </div>
 </template>
 
 <script>
+import { curriculum, shuaixuan } from "../../api/api";
 import axios from "axios";
 export default {
+  // 免费
+  filters: {
+    prices(val) {
+      if (val == 0) {
+        return "免费";
+      } else {
+        return "1";
+      }
+    },
+  },
+  // Coursedetail
   data() {
     return {
       show: false,
+      color: "green",
       is: 0,
       is1: 0,
       acti: 0,
-      list2: [],
-      list3: [],
+      isShows: true,
+      showList: [],
+      userList: [],
+      colors: "red",
       list: ["初一", "初二", "初三", "高一", "高二"],
       list1: ["语文", "数学", "英语", "物理", "化学"],
-
+      value: "",
+      arrs: [],
       isshow: true,
-      value: 0,
+      value: "",
       option: [
         { text: "综合排序", value: 0 },
         { text: "最新", value: 1 },
@@ -217,21 +146,76 @@ export default {
       ],
     };
   },
-  mounted() {
-    // let list2 = localStorage.list2;
-    // if (list2) {
-    //   this.list2 = JSON.parse(list2);
-    // }
-    console.log(this.show);
-
-    axios.get("/data2.json").then((res) => {
-      console.log(res.data.data);
-      this.list2 = res.data.data;
-      this.list3 = res.data.data3;
-      // localStorage.list2 =JSON.stringify(this.list2)
+  async mounted() {
+    var res = await curriculum({
+      page: 1,
+      limit: 10,
     });
+    if (res.data.code == 200) {
+      this.showList = res.data.data.list;
+      this.userList = res.data.data.list;
+      console.log(res.data.data.list);
+    }
+    // 筛选
+    var shai = await shuaixuan();
+    if (shai.data.code == 200) {
+      console.log(shai.data.data.appCourseType);
+      this.arrs = shai.data.data.appCourseType;
+    }
   },
   methods: {
+    // 点击重置确认
+    chong() {
+      var obj = {
+        page: 1,
+        limit: 10,
+      };
+      curriculum(obj).then((res) => {
+        this.showList = res.data.data.list;
+        this.userList = res.data.data.list;
+      });
+    },
+    // 点击跳转详情
+    goCoursedetail(item) {
+      this.$router.push({
+        path: "/Coursedetail",
+        query: {
+          val1: item.id,
+          has_buy: item.has_buy,
+          course_type:item.course_type
+        },
+      });
+    },
+    sorts(index) {
+      var obj = {
+        page: 1,
+        limit: 10,
+        course_type: 0,
+        order_by: index,
+        is_vip: 0,
+      };
+      curriculum(obj).then((res) => {
+        console.log(res.data.data.list);
+        this.userList = [];
+        this.userList = res.data.data.list;
+      });
+    },
+    // 筛选
+    screen(index) {
+      var obj = {
+        page: 1,
+        limit: 10,
+        course_type: index,
+        is_vip: 0,
+      };
+      this.isshows = false;
+      curriculum(obj).then((res) => {
+        console.log(res.data.data.list);
+        this.userList = [];
+        this.userList = res.data.data.list;
+      });
+      console.log(index);
+    },
     btn(index) {
       this.is = index;
     },
@@ -240,20 +224,21 @@ export default {
     },
     search() {
       this.$router.push({
-        path: "/search",
+        path: "/searchs",
       });
     },
 
-    // 精品课程
-    Coursedetail(index) {
-      console.log(index);
-      this.$router.push({
-        path: "/Coursedetail",
-        query: {
-          val1: index,
-        },
-      });
-    },
+    // // 精品课程
+    // Coursedetail(index) {
+    //   console.log(index);
+    //   this.$router.push({
+    //     path: "/Coursedetail",
+    //     query: {
+    //       val1: index,
+    //       course_type:item.course_type,
+    //     },
+    //   });
+    // },
 
     tiao(item) {
       this.$router.push({
@@ -268,13 +253,74 @@ export default {
 </script>
 
 <style scoped >
+.bottom_div {
+  width: 100%;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  color: gray;
+}
+.content_div {
+  width: 70%;
+}
+.content_div > div {
+  display: flex;
+  justify-content: space-between;
+}
+/* 中间内容部分 */
+.content_text {
+  width: 92%;
+  margin: 2.3rem auto;
+}
+.content_text ul {
+  width: 100%;
+}
+.content_text ul li {
+  width: 100%;
+  height: 1.7rem;
+  /* border: 1px solid red; */
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 0.2rem;
+  background: #fff;
+  margin: 0.25rem 0;
+  align-items: center;
+  border-radius: 0.2rem;
+}
+.content_text ul li p {
+  margin: 0 0 0.55rem 0;
+}
+.nav_top {
+  width: 100%;
+  height: 1rem;
+  margin: 0rem auto;
+  position: relative;
+  background: white;
+  z-index: 3000;
+}
+.searchs {
+  position: absolute;
+  left: 2.8rem;
+  top: 0.225rem;
+}
+#tex {
+  width: 95%;
+  margin: 0 2.5%;
+  height: 0.7rem;
+  border: 1px solid gray;
+  border-radius: 0.3rem;
+}
+#tex::placeholder {
+  text-align: center;
+}
 body {
   font-size: 0.3rem;
 }
-.lessone_wrap{
+.lessone_wrap {
   width: 100%;
   height: 90vh;
   overflow: scroll;
+  background: #f7f8fa;
 }
 .tmk-item span:hover {
   color: red;
@@ -377,7 +423,7 @@ img {
   color: #595959;
 }
 .tmk-item span {
-  margin: 0 5.13333vw 1.86667vw 0;
+  margin: 0.2rem 5.13333vw 1.86667vw 0;
   display: inline-block;
   width: 18.4vw;
   height: 8.8vw;

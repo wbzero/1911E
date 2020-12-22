@@ -18,12 +18,12 @@
         <div class="attentions">
           <div class="attention_left">
             <img
-              :src="list.img"
+              :src="list.teacher_avatar"
               style="width: 0.8rem; height: 0.8rem; border-radius: 50%"
             />
             <div class="attention_left_div">
               <div class="attention_left_h">
-                <h3>{{ list.title }}</h3>
+                <h3>{{ list.introduction }}</h3>
                 <p style="color: rgba(246, 195, 161)">{{ list.mm }}</p>
               </div>
               <span style="color: gray">男 30年教龄</span>
@@ -49,7 +49,7 @@
           color="orange"
         >
           <van-tab>
-             <template #title>
+            <template #title>
               <div style="font-size: 0.3rem">讲师介绍</div>
             </template>
             <div class="introduce">
@@ -196,19 +196,33 @@
 
 <script>
 import { Toast } from "vant";
+import { getAppIndex } from "../../../api/api";
 export default {
-  mounted() {
-    this.$axios.get("http://localhost:8080/list.json").then((res) => {
-      res.data.list.filter((item) => {
-        if (item.id == this.val) {
-          this.list = item;
-        }
-      });
-    });
+  created() {
     this.$axios.get("http://localhost:8080/data1.json").then((res) => {
       // console.log(res.data.data);
       this.userList = res.data.data;
     });
+  },
+  async mounted() {
+    var res = await getAppIndex();
+    if (res.data.code == 200) {
+      res.data.data[4].list.filter((item) => {
+        if (item.teacher_id == this.val) {
+          this.list = item;
+          console.log(item);
+        }
+      });
+    }
+    // this.$axios
+    //   .get("http://120.53.31.103:84/api/app/recommend/appIndex")
+    //   .then((res) => {
+    //     res.data.data[4].list.filter((item) => {
+    //       if (item.teacher_id == this.val) {
+    //         this.list = item;
+    //       }
+    //     });
+    //   });
   },
   data() {
     return {

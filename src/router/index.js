@@ -21,6 +21,72 @@ const routes = [{
     }
   },
   {
+    path: '/subject', // 兴趣
+    name: 'subject',
+    component: () => import('../views/user/components/subject'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/tag', // 昵称
+    name: 'tag',
+    component: () => import('../views/user/components/tag'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/sex', // 性别
+    name: 'sex',
+    component: () => import('../views/user/components/sex'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/orderList', // 订单详情
+    name: 'orderList',
+    component: () => import('../views/user/components/orderList'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/xuanxiang', // 登录页面
+    name: 'xuanxiang',
+    component: () => import('../views/xuanxiang.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/teseke', // 特色课我的
+    name: 'teseke',
+    component: () => import('../views/user/components/teseke'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/pass', // 登录页面
+    name: 'pass',
+    component: () => import('../views/pass.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/loginPass',
+    name: 'loginpass',
+    component: () => import('../views/LoginPass.vue'),
+    meta: {
+      show: false
+    }
+  },
+
+
+  {
     path: '/item',
     name: 'Item',
     component: () => import('../views/practice/Item.vue'),
@@ -72,49 +138,48 @@ const routes = [{
     path: '/item7',
     name: 'Item7',
     component: () => import('../views/practice/Item7.vue'),
-    meta:{
-      show:true
+    meta: {
+      show: true
     },
-      redirect: '/item7_1',
-    children: [
-      {
+    redirect: '/item7_1',
+    children: [{
 
-        path: '/item7_1',
-        name: 'item7_1',
-        component: () => import('../views/practice/itme7/item7_1.vue'),
-      },
-      {
-        path: '/item7_2',
-        name: 'item7_2',
-        component: () => import('../views/practice/itme7/item7_2.vue'),
-      },
-      {
-        path: '/item7_3',
-        name: 'item7_3',
-        component: () => import('../views/practice/itme7/item7_3.vue'),
-      },
-      {
-        path: '/item7_4',
-        name: 'item7_4',
-        component: () => import('../views/practice/itme7/item7_4.vue'),
-      },
-      {
-        path: '/item7_5',
-        name: 'item7_5',
-        component: () => import('../views/practice/itme7/item7_5.vue'),
-      },
-      {
-        path: '/item7_6',
-        name: 'item7_6',
-        component: () => import('../views/practice/itme7/item7_6.vue'),
-      },
-      {
-        path: '/item7_7',
-        name: 'item7_7',
-        component: () => import('../views/practice/itme7/item7_7.vue'),
-      }
+        path: '/item7_1',
+        name: 'item7_1',
+        component: () => import('../views/practice/itme7/item7_1.vue'),
+      },
+      {
+        path: '/item7_2',
+        name: 'item7_2',
+        component: () => import('../views/practice/itme7/item7_2.vue'),
+      },
+      {
+        path: '/item7_3',
+        name: 'item7_3',
+        component: () => import('../views/practice/itme7/item7_3.vue'),
+      },
+      {
+        path: '/item7_4',
+        name: 'item7_4',
+        component: () => import('../views/practice/itme7/item7_4.vue'),
+      },
+      {
+        path: '/item7_5',
+        name: 'item7_5',
+        component: () => import('../views/practice/itme7/item7_5.vue'),
+      },
+      {
+        path: '/item7_6',
+        name: 'item7_6',
+        component: () => import('../views/practice/itme7/item7_6.vue'),
+      },
+      {
+        path: '/item7_7',
+        name: 'item7_7',
+        component: () => import('../views/practice/itme7/item7_7.vue'),
+      }
 
-    ]
+    ]
   },
   {
     path: '/search',
@@ -173,11 +238,27 @@ const routes = [{
     }
   },
   {
+    path: '/searchs', // 约课记录里的一对一辅导中的搜索
+    name: 'searchs',
+    component: () => import('../views/lessone/Search.vue'),
+    meta: {
+      show: false
+    }
+  },
+  {
     path: '/user', // 我的页面
     name: 'User',
     component: () => import('../views/user/index.vue'),
     meta: {
       show: true
+    },
+    beforeEnter: (to, from, next) => {
+      var tocken = localStorage.getItem("adminToken")
+      if (tocken) {
+        next()
+      } else {
+        next("/loginpass")
+      }
     }
   },
 
@@ -234,7 +315,7 @@ const routes = [{
       show: false
     }
   },
-    
+
   {
     path: '/Currency', //我的余额
     name: 'Currency',
@@ -343,26 +424,36 @@ const routes = [{
     path: '/info', //个人信息
     name: "Info",
     component: () => import('../views/user/Info.vue'),
-    meta:{
-      show:false
+    meta: {
+      show: false
     }
   },
   {
     path: '/order',
     name: 'order',
     component: () => import('../views/lessone/order.vue'),
-    meta:{
-      show:false
+    meta: {
+      show: false
+    }
+  },
+  {
+    path: '/information',
+    name: 'information',
+    component: () => import('../views/home/components/information.vue'),
+    meta: {
+      show: false
     }
   },
 
- 
+
+
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
+
 
 export default router

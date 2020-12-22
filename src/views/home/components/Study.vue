@@ -14,19 +14,28 @@
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+          text-align: center;
         "
       >
-        每时每课特级教师-自主招生冲刺讲座8-二次函数2--根的分布
+        {{ userList.title }}
       </p>
       <span>
         <van-icon name="notes-o" size="20px" @click="StudyCalendar" />
       </span>
     </div>
+    <div class="keshis" >
+      <span>共{{userList.section_num}}课时</span>
+      <p></p>
+      <span>已学习{{userList.progress_rate}}%</span>
+    </div>
     <div class="study_center">
       <ul>
-        <li v-for="(item, index) in 5" :key="index" @click="add">
+        <li v-for="(item, index) in showList" :key="index" @click="add">
           <p style="width: 90%; font-size: 0.27rem; margin: 0.4rem 0 0 0">
-            自主招生冲刺讲座6-多元方程组与可转化为多元方程组问题
+            {{ item.periods_title }}
+          </p>
+          <p v-for="(items, index) in item.teachers" :key="index" style="margin:0.2rem 0;color:gray">
+            {{ items.teacher_name }}   {{item.start_play}}
           </p>
           <div>
             <span
@@ -98,12 +107,27 @@
 </template>
 
 <script>
+import { xuexi } from "../../../api/api";
 export default {
   data() {
     return {
       show: false,
       value: 3,
+      val1: this.$route.query.val1,
+      userList: {},
+      showList: [],
     };
+  },
+  mounted() {
+    // console.log(this.list);
+    // this.userList=this.list.course
+    xuexi(this.val1).then((res) => {
+      if (res.data.code == 200) {
+        console.log(res.data.data);
+        this.userList = res.data.data.course;
+        this.showList = res.data.data.periods;
+      }
+    });
   },
   methods: {
     StudyCalendar() {
@@ -116,16 +140,32 @@ export default {
       this.show = true;
     },
     add() {
-      this.$router.push("/video")
+      this.$router.push("/video");
     },
-    back(){
-      window.history.back()
-    }
+    back() {
+      window.history.back();
+    },
   },
 };
 </script>
 
 <style scoped>
+  .keshis{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    height: 1rem;
+    /*border: 1px solid red;*/
+    box-sizing: border-box;
+    padding: 0 0.3rem;
+    align-items: center;
+  }
+  .keshis>p{
+    width: 70%;
+    height: 0.08rem;
+    background: #E9E9E9;
+  }
 .study_center {
   width: 95%;
   margin: 0 auto;
@@ -137,13 +177,14 @@ export default {
   width: 100%;
   height: 2rem;
   box-sizing: border-box;
+  margin: 0.2rem 0;
   padding: 0 0.2rem;
   border: 2px solid #e9e9e9;
 }
 .study_center ul li > div {
   display: flex;
   align-items: center;
-  margin: 0.3rem 0;
+  margin: 0rem 0;
 }
 
 .issue {

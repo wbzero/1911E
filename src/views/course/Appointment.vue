@@ -51,11 +51,16 @@
 </template>
 
 <script>
+  import {tearch} from "../../api/api"
 export default {
   data(){
     return{
       isactive:0
     }
+  },
+ async mounted() {
+    var res=await tearch(this.$route.query.id)
+   console.log(res)
   },
   methods: {
     left() {

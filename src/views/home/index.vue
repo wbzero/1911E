@@ -1,42 +1,18 @@
 <template>
   <div class="home_wrap">
     <!-- 头部轮播 -->
+
     <van-swipe
       class="my-swipe"
       :autoplay="3000"
       indicator-color="white"
       :show-indicators="false"
     >
-      <van-swipe-item>
-        <img
-          src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019MGNW3BtiS91569839576.jpg"
-          style="width: 100%; height: 100%"
-          alt=""
-        />
-      </van-swipe-item>
-      <van-swipe-item>
-        <img
-          src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019LnKumseuhw1569839569.jpg"
-          alt=""
-          style="width: 100%; height: 100%"
-        />
-      </van-swipe-item>
-      <van-swipe-item>
-        <img
-          src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/20193KAjU2cB6h1569839562.jpg"
-          alt=""
-          style="width: 100%; height: 100%"
-        />
-      </van-swipe-item>
-      <van-swipe-item>
-        <img
-          src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/20197Cxc53hktC1569839552.jpg"
-          alt=""
-          style="width: 100%; height: 100%"
-        />
+      <van-swipe-item v-for="(item, index) in tab" :key="index">
+        <img :src="item.banner_img" style="width: 100%; height: 100%" alt="" />
       </van-swipe-item>
     </van-swipe>
-    <!-- 特色课、一对于辅导、学习日历 -->
+   
     <div class="characteristic">
       <ul>
         <li @click="cousers">
@@ -65,182 +41,61 @@
         </li>
       </ul>
     </div>
+
     <!-- 名师阵容 -->
-    <div class="battle_array">
-      <div class="battle_array_top">名师阵容</div>
-      <div class="battle_array_bottom">
-        <ul>
-          <li
-            v-for="(item, index) in list"
-            :key="index"
-            @click="tearch(item.id)"
-          >
-            <img
-              :src="item.img"
-              alt=""
-              style="width: 0.8rem; height: 0.8rem; border-radius: 50%"
-            />
-            <div class="battle_array_bottom_right">
-              <p style="font-size: 0.3rem">{{ item.name }}</p>
-              <p
-                style="
-                  color: gray;
-                  width: 230px;
-                  overflow: hidden;
-                  white-space: nowrap;
-                  text-overflow: ellipsis;
-                  margin: 0.1rem 0.1rem;
-                "
-              >
-                {{ item.title }}
-              </p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- 精品课程 -->
-    <div class="Boutique">
-      <div class="Boutique_top">精品课程</div>
-      <div class="Boutique_bottom">
-        <ul>
-          <li
-            v-for="(item, index) in list1"
-            :key="index"
-            @click="Coursedetail(item.id)"
-          >
-            <div class="fixed_img" v-show="show == index">
-              <img src="../../../public/img/bm.png" alt="" />
-            </div>
-            <div class="Boutique_bottom_top">
-              <p style="font-size: 0.31rem">{{ item.title }}</p>
-
-              <span style="color: gray; display: inline-block; margin: 0.1rem 0"
-                >共一课时</span
-              >
-            </div>
-
-            <div class="Boutique_bottom_img1">
-              <img
-                :src="item.img"
-                alt=""
-                style="width: 0.5rem; height: 0.5rem; border-radius: 50%"
-              />
-              <p>{{ item.name }}</p>
-            </div>
-            <div class="Boutique_bottom_free">
-              <span style="color: gray; font-size: 0.3rem">100人已报名</span>
-              <span style="color: green; font-size: 0.3rem">免费</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- 推荐课程 -->
-    <div class="Boutiques">
-      <div class="Boutique_tops">推荐课程</div>
-      <div class="Boutique_bottoms">
-        <ul>
-          <li
-            v-for="(item, index) in list1"
-            :key="index"
-            @click="Coursedetail(item.id)"
-          >
-            <div class="fixed_img" v-show="show">
-              <img src="../../../public/img/bm.png" alt="" />
-            </div>
-            <div class="Boutique_bottom_tops">
-              <p style="font-size: 0.31rem">{{ item.title }}</p>
-
-              <span style="color: gray; display: inline-block; margin: 0.1rem 0"
-                >共一课时</span
-              >
-            </div>
-
-            <div class="Boutique_bottom_img1s">
-              <img
-                :src="item.img"
-                alt=""
-                style="width: 0.5rem; height: 0.5rem; border-radius: 50%"
-              />
-              <p>{{ item.name }}</p>
-            </div>
-            <div class="Boutique_bottom_frees">
-              <span style="color: gray; font-size: 0.3rem">100人已报名</span>
-              <span style="color: green; font-size: 0.3rem">免费</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- 明星讲座 -->
-    <div class="dramatic_decline">
-      <div class="dramatic_decline_top">明星讲师</div>
-      <div class="dramatic_decline_bottom">
-        <ul>
-          <li
-            v-for="(item, index) in list2"
-            :key="index"
-            @click="Lecturer(item.id)"
-          >
-            <img :src="item.img" alt="" style="width: 0.7rem; height: 0.7rem" />
-            <div class="battle_array_bottom_right">
-              <div class="battle_array_bottom_right_div">
-                <p style="font-size: 0.3rem">{{ item.title }}</p>
-                <span style="color: #ed8c4c; margin: 0 0.2rem">{{
-                  item.mm
-                }}</span>
-              </div>
-
-              <p
-                style="
-                  margin: 0.1rem 0;
-                  color: gray;
-                  width: 250px;
-                  overflow: hidden;
-                  white-space: nowrap;
-                  text-overflow: ellipsis;
-                "
-              >
-                {{ item.shuju }}
-              </p>
-            </div>
-          </li>
-        </ul>
+    <div v-for="(items, index) in list" :key="index">
+      <div class="battle_array">
+        <div class="battle_array_top">{{ items.channel_info.name }}</div>
+        <index_item
+          :dataList="items.list"
+          :dataType="items.channel_info.type"
+          @tearch="tearch"
+          @Coursedetail="Coursedetail"
+          @information="information"
+        ></index_item>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import index_item from "./components/IndexItem";
+import { getAppIndex, banner } from "../../api/api";
 export default {
+  components: {
+    index_item,
+  },
   data() {
     return {
+      tab: [],
       list: [],
       list1: [],
       list2: [],
       show: 1,
+      battle: "",
     };
   },
   created() {
     var index = localStorage.getItem("index");
-    if(index){
-      this.show=index
+    if (index) {
+      this.show = index;
     }
-    
   },
-  mounted() {
-    this.$axios.get("http://localhost:8080/data.json").then((res) => {
-      // console.log(res.data.data);
+  async mounted() {
+    var res = await getAppIndex();
+    var ban = await banner();
+    if (ban.data.code == 200) {
+      this.tab = ban.data.data;
+    } else {
+      Toast.fail("轮播接口请求失败");
+    }
+    if (res.data.code == 200) {
       this.list = res.data.data;
-    });
-    this.$axios.get("http://localhost:8080/data1.json").then((res) => {
-      // console.log(res.data.data);
-      this.list1 = res.data.data;
-    });
-    this.$axios.get("http://localhost:8080/list.json").then((res) => {
-      this.list2 = res.data.list;
-    });
+    } else {
+      Toast.fail("明星讲师接口请求失败");
+    }
+
+    console.log(res.data.data);
   },
   methods: {
     cousers() {
@@ -262,19 +117,29 @@ export default {
       });
     },
     // 精品课程
-    Coursedetail(index) {
-     
-      console.log(index);
+    Coursedetail(item) {
+      console.log(item);
       this.$router.push({
         path: "/Coursedetail",
         query: {
-          val1: index,
+          val1: item.id,
+          has_buy: item.has_buy,
+          course_type: item.course_type,
         },
       });
     },
     Lecturer(index) {
       this.$router.push({
         path: "/Lecturer",
+        query: {
+          val: index,
+        },
+      });
+    },
+    // 点击资讯详情
+    information(index) {
+      this.$router.push({
+        path: "/information",
         query: {
           val: index,
         },
@@ -369,6 +234,7 @@ export default {
 }
 .battle_array {
   width: 100%;
+  margin: 0.2rem 0;
 }
 .battle_array_top {
   width: 95%;
